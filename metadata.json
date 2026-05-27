@@ -1,0 +1,6 @@
+{
+  "name": "Бизнес-центр на Красносельской",
+  "description": "Современный бизнес-центр в центре Москвы недалеко от метро Красносельская. Информация об аренде, интерактивная карта и онлайн-заявка.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
