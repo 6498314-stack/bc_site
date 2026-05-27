@@ -10,7 +10,6 @@ import Advantages from './components/Advantages';
 import OfficeSelector from './components/OfficeSelector';
 import InteractiveMap from './components/InteractiveMap';
 import ApplicationForm from './components/ApplicationForm';
-import DeploymentGuide from './components/DeploymentGuide';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import { OfficeSpace, BookingRequest } from './types';
@@ -107,13 +106,6 @@ export default function App() {
 
         {/* FAQs base knowledge */}
         <FAQ />
-
-        {/* Unified Virtual Server Isolation deployment manual */}
-        <section id="deployment" className="bg-[#F4F1EE] py-20 scroll-mt-20 border-b border-[#1A1A1A]/10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <DeploymentGuide />
-          </div>
-        </section>
 
       </main>
 

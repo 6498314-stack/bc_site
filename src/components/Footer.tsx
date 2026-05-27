@@ -74,11 +74,6 @@ export default function Footer({ onNavigate }: FooterProps) {
                   ВОПРОСЫ И ОТВЕТЫ
                 </button>
               </li>
-              <li>
-                <button onClick={() => onNavigate('deployment')} className="text-stone-400 hover:text-red-500 hover:underline transition cursor-pointer">
-                  ИНСТРУКЦИЯ VPS
-                </button>
-              </li>
             </ul>
           </div>
 

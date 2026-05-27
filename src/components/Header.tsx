@@ -42,7 +42,6 @@ export default function Header({
     { label: 'Выбрать офис', id: 'offices' },
     { label: 'Карта и проезд', id: 'map' },
     { label: 'Вопросы', id: 'faq' },
-    { label: 'Инструкция VPS', id: 'deployment' },
   ];
 
   return (
