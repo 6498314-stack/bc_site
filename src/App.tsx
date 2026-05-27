@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Advantages from './components/Advantages';
 import OfficeSelector from './components/OfficeSelector';
+import PhotoGallery from './components/PhotoGallery';
 import InteractiveMap from './components/InteractiveMap';
 import ApplicationForm from './components/ApplicationForm';
 import FAQ from './components/FAQ';
@@ -100,6 +101,9 @@ export default function App() {
 
         {/* Custom interactive office plan selector */}
         <OfficeSelector onOfficeSelect={handleOfficeSelect} />
+
+        {/* Live gallery of original business center photos */}
+        <PhotoGallery />
 
         {/* Fully operational interactive maps block */}
         <InteractiveMap />

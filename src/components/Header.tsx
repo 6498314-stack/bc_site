@@ -40,6 +40,7 @@ export default function Header({
   const navItems = [
     { label: 'О Бизнес-центре', id: 'about' },
     { label: 'Выбрать офис', id: 'offices' },
+    { label: 'Галерея', id: 'gallery' },
     { label: 'Карта и проезд', id: 'map' },
     { label: 'Вопросы', id: 'faq' },
   ];
