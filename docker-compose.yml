@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  bc_krasnoselskaya_site:
+    build: .
+    container_name: bc_site_container
+    restart: always
+    ports:
+      # Пробрасываем порт 8085 наружу для просмотра без домена.
+      # Если на сервере нет других сайтов на порт 80, вы можете изменить значение на "80:80",
+      # тогда сайт будет открываться просто по IP адресу без указания порта.
+      - "8085:80"
+    environment:
+      - NODE_ENV=production
