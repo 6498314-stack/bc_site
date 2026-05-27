@@ -11,7 +11,7 @@ export default function Advantages() {
     {
       icon: <FileCheck className="w-5 h-5 text-red-700" />,
       title: 'Прямая аренда от собственника',
-      desc: 'Заключение договора аренды напрямую с владельцем здания. Отсутствие скрытых платежей, комиссий брокерам. Предоставляем полный пакет документов и официальный юридический адрес (ИФНС №1).',
+      desc: 'Заключение договора аренды напрямую с владельцем здания. Отсутствие скрытых платежей, комиссий брокерам. Предоставляем полный пакет документов и официальный юридический адрес (ИФНС №8).',
     },
     {
       icon: <Sparkles className="w-5 h-5 text-red-700" />,
@@ -101,7 +101,7 @@ export default function Advantages() {
             <div className="lg:col-span-4 flex justify-start lg:justify-end">
               <div className="bg-white/5 border border-white/10 rounded-none p-6 text-center w-full max-w-sm">
                 <span className="text-[10px] text-stone-400 font-sans uppercase tracking-widest font-semibold block">ЮРИДИЧЕСКИЙ ПАКЕТ</span>
-                <span className="text-red-500 text-xl font-bold font-serif italic block mt-1.5">ИФНС №1 г. Москва</span>
+                <span className="text-red-500 text-xl font-bold font-serif italic block mt-1.5">ИФНС №8 г. Москва</span>
                 <span className="text-[11px] text-stone-400 block mt-2.5 leading-relaxed">
                   Полная легальность, согласование договоров за 2 дня, быстрая прописка компании непосредственно в БЦ.
                 </span>

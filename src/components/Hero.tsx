@@ -17,7 +17,7 @@ export default function Hero({ onRentClick, onExploreClick }: HeroProps) {
     { value: 'B+', label: 'Класс здания' },
     { value: '30-1500 м²', label: 'Площади офисов' },
     { value: 'от 18 500 ₽', label: 'Годовая м² ставка' },
-    { value: '7 мин', label: 'До м. Красносельская' },
+    { value: '3 мин', label: 'До м. Красносельская' },
   ];
 
   return (
@@ -45,7 +45,7 @@ export default function Hero({ onRentClick, onExploreClick }: HeroProps) {
               <p className="text-stone-700 font-sans text-sm md:text-base leading-relaxed max-w-xl">
                 Бизнес-центр на Красносельской гармонично объединяет камерную архитектуру XIX века,
                 монументальные кирпичные фасады, изящные Loft-решения и первоклассную IT-инфраструктуру. 
-                Всего 7 минут размеренным шагом от станции метро «Красносельская».
+                Всего 3 минуты размеренным шагом от станции метро «Красносельская».
               </p>
             </div>
 
@@ -55,8 +55,8 @@ export default function Hero({ onRentClick, onExploreClick }: HeroProps) {
                 <MapPin className="w-5 h-5 text-red-700" />
               </div>
               <div className="text-xs">
-                <span className="font-sans uppercase tracking-wider font-bold text-stone-950 block">ул. Краснопрудная, д. 30-34, корп. 1</span>
-                <span className="text-stone-500 font-sans mt-0.5 block">Центральный округ • ИФНС №1 • Собственный съезд на ТТК</span>
+                <span className="font-sans uppercase tracking-wider font-bold text-stone-950 block">ул. Верхняя Красносельская, д. 2/1 (строения 2, 3, 4)</span>
+                <span className="text-stone-500 font-sans mt-0.5 block">Центральный округ • ИФНС №8 • Собственный съезд на ТТК</span>
               </div>
             </div>
 

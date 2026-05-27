@@ -23,19 +23,14 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div className="lg:col-span-4 space-y-4">
             <button
               onClick={() => onNavigate('hero')}
-              className="flex items-center gap-2.5 text-left focus:outline-none group cursor-pointer"
+              className="flex items-center text-left focus:outline-none group cursor-pointer"
             >
-              <div className="bg-red-700 text-white p-2.5 rounded-none border border-red-800">
-                <Building2 className="w-5 h-5 text-white animate-none" />
-              </div>
-              <div className="text-left">
-                <span className="font-serif font-black italic text-white tracking-tight text-lg leading-none block">
-                  БЦ НА КРАСНОСЕЛЬСКОЙ
-                </span>
-                <span className="text-[10px] text-stone-500 tracking-wider block uppercase font-bold font-sans mt-1">
-                  Прямая аренда офисов класса B+
-                </span>
-              </div>
+              <img 
+                src="https://allwebs.ru/images/2026/05/27/dedc6962b9764198dc2fcd5397230818.png" 
+                alt="БЦ Красносельский" 
+                referrerPolicy="no-referrer"
+                className="h-10 md:h-12 w-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
+              />
             </button>
             
             <p className="text-stone-400 font-sans text-xs leading-relaxed max-w-sm">
@@ -86,14 +81,14 @@ export default function Footer({ onNavigate }: FooterProps) {
               <li className="flex items-start gap-2.5 text-left">
                 <MapPin className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
                 <div className="text-left">
-                  <span className="text-stone-100 font-bold block">ул. Краснопрудная, д. 30-34с1</span>
-                  <span className="text-stone-500 text-[11px] block mt-0.5">ЦАО, Москва • ИФНС №1</span>
+                  <span className="text-stone-100 font-bold block">ул. Верхняя Красносельская, д. 2/1 (строения 2, 3, 4)</span>
+                  <span className="text-stone-500 text-[11px] block mt-0.5">ЦАО, Москва • ИФНС №8</span>
                 </div>
               </li>
               <li className="flex items-center gap-2.5 text-left">
                 <Clock className="w-4 h-4 text-red-600 shrink-0" />
                 <div className="text-left">
-                  <span className="text-stone-100 font-bold block">7 минут пешком (620м)</span>
+                  <span className="text-stone-100 font-bold block">3 минуты пешком (320м)</span>
                   <span className="text-stone-500 text-[11px] block">от станции метро «Красносельская»</span>
                 </div>
               </li>
@@ -108,10 +103,10 @@ export default function Footer({ onNavigate }: FooterProps) {
             <div className="space-y-3.5 text-xs text-left">
               <div className="space-y-1 text-left">
                 <a
-                  href="tel:+74951234567"
+                  href="tel:+79175219421"
                   className="text-white hover:text-red-500 font-serif font-bold italic text-base block transition"
                 >
-                  +7 (495) 123-45-67
+                  +7 (917) 521-94-21
                 </a>
                 <span className="text-emerald-500 text-[9px] font-sans uppercase font-bold tracking-wider block">
                   Принимаем звонки: 09:00 - 20:00

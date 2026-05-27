@@ -62,19 +62,14 @@ export default function Header({
               onNavigate('hero');
               setIsOpen(false);
             }}
-            className="flex items-center gap-2.5 text-left focus:outline-none group cursor-pointer"
+            className="flex items-center text-left focus:outline-none group cursor-pointer"
           >
-            <div className="bg-red-700 text-white p-2.5 rounded-none group-hover:scale-105 transition-transform">
-              <Building2 className="w-4.5 h-4.5" />
-            </div>
-            <div>
-              <span className="font-serif font-black italic text-stone-900 tracking-tight block text-base md:text-lg leading-none">
-                БЦ КРАСНОСЕЛЬСКИЙ
-              </span>
-              <span className="text-[9px] text-[#1A1A1A]/60 tracking-[0.2em] block uppercase font-bold font-sans mt-0.5">
-                КЛАСС B+ • ЦЕНТР МОСКВЫ
-              </span>
-            </div>
+            <img 
+              src="https://allwebs.ru/images/2026/05/27/dedc6962b9764198dc2fcd5397230818.png" 
+              alt="БЦ Красносельский" 
+              referrerPolicy="no-referrer"
+              className="h-10 md:h-12 w-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
+            />
           </button>
 
           {/* Desktop Navigation */}
@@ -99,10 +94,10 @@ export default function Header({
             {/* Quick Contacts */}
             <div className="flex flex-col text-right">
               <a
-                href="tel:+74951234567"
+                href="tel:+79175219421"
                 className="text-stone-900 hover:text-red-700 font-sans text-xs uppercase tracking-wider font-bold transition"
               >
-                +7 (495) 123-45-67
+                +7 (917) 521-94-21
               </a>
               <span className="text-[9px] font-mono text-emerald-750 font-bold flex items-center gap-1 justify-end">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
@@ -182,11 +177,11 @@ export default function Header({
             <hr className="border-stone-300 my-2" />
             <div className="flex flex-col gap-3 px-4 pt-2">
               <a
-                href="tel:+74951234567"
+                href="tel:+79175219421"
                 className="text-stone-950 font-bold text-sm tracking-wider flex items-center gap-2"
               >
                 <Phone className="w-4 h-4 text-stone-400" />
-                +7 (495) 123-45-67
+                +7 (917) 521-94-21
               </a>
               <a
                 href="mailto:rent@bc-krasnoselskaya.ru"

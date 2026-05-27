@@ -10,10 +10,10 @@ export default function InteractiveMap() {
   const [activeTab, setActiveTab] = useState<'walk' | 'car'>('walk');
 
   const walkSteps = [
-    { text: 'Выход один из ст. м. «Красносельская».' },
-    { text: 'Поверните налево и идите вдоль ул. Краснопрудная около 450 метров.' },
-    { text: 'Поверните в переулок перед банком ВТБ во внутренний двор.' },
-    { text: 'Через 80 метров вы увидите современную проходную БЦ на Красносельской (желтые фасады с логотипом БЦ).' }
+    { text: 'Выход один из станции метро «Красносельская».' },
+    { text: 'Поверните направо и пройдите вдоль улицы Верхняя Красносельская около 200 метров.' },
+    { text: 'Поверните во двор у строений дома 2/1.' },
+    { text: 'Вы на месте! Современная охраняемая территория и вход в БЦ «Красносельский».' }
   ];
 
   const carRoutes = [
@@ -120,7 +120,7 @@ export default function InteractiveMap() {
             <div className="bg-[#1A1A1A] text-white rounded-none p-4 flex items-center gap-3">
               <Compass className="w-5 h-5 text-red-500 shrink-0" />
               <p className="font-mono text-[9px] uppercase tracking-wider text-stone-300 leading-normal">
-                Координаты: <strong className="text-white">55.7794, 37.6625</strong> (пропускной пункт: <strong className="text-white">+7 495 123-45-67</strong>).
+                Координаты: <strong className="text-white">55.7793, 37.6631</strong> (пропускной пункт: <strong className="text-white">+7 (917) 521-94-21</strong>).
               </p>
             </div>
 
@@ -130,7 +130,7 @@ export default function InteractiveMap() {
           <div className="lg:col-span-7 rounded-none overflow-hidden border border-[#1A1A1A]/10 relative h-[450px] lg:h-auto min-h-[400px]">
             {/* Map Frame using standardized open Yandex Maps frame showing Krasnoselskaya Metro area */}
             <iframe
-              src="https://yandex.ru/map-widget/v1/?um=constructor%3A7a195be21c1664e40280b15c1b693acb0aa447d48cc274a44b94fddde4be89aa&amp;source=constructor"
+              src="https://yandex.ru/map-widget/v1/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%92%D0%B5%D1%80%D1%85%D0%BD%D1%8F%D1%8F%20%D0%11%D1%80%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B0%D1%8F%2C%20%D0%B4.%202%2F1"
               width="100%"
               height="100%"
               frameBorder="0"
@@ -141,15 +141,26 @@ export default function InteractiveMap() {
             ></iframe>
             
             {/* Marker Floating Card on the map */}
-            <div className="absolute top-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur border border-[#1A1A1A]/10 p-4 rounded-none shadow-none max-w-sm flex items-center gap-3.5 z-10 pointer-events-none text-left">
-              <div className="p-2.5 bg-[#1A1A1A] text-white rounded-none shrink-0">
-                <MapPin className="w-5 h-5 text-red-600 animate-pulse" />
+            <div className="absolute top-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur border border-[#1A1A1A]/10 p-4 rounded-none shadow-none max-w-sm flex flex-col gap-3.5 z-10 text-left">
+              <div className="flex items-center gap-3.5">
+                <div className="p-2.5 bg-[#1A1A1A] text-white rounded-none shrink-0">
+                  <MapPin className="w-5 h-5 text-red-600 animate-pulse" />
+                </div>
+                <div className="text-left space-y-0.5">
+                  <span className="font-serif font-bold italic text-stone-900 text-sm block">БЦ на Красносельской</span>
+                  <span className="text-stone-500 font-sans text-[11px] block">ул. Верхняя Красносельская, д. 2/1 (строения 2, 3, 4)</span>
+                  <span className="text-emerald-700 text-[9px] font-sans font-bold block uppercase tracking-wider">● Свободная парковка активна</span>
+                </div>
               </div>
-              <div className="text-left space-y-0.5">
-                <span className="font-serif font-bold italic text-stone-900 text-sm block">БЦ на Красносельской</span>
-                <span className="text-stone-500 font-sans text-[11px] block">ул. Краснопрудная, д. 30-34с1</span>
-                <span className="text-emerald-700 text-[9px] font-sans font-bold block uppercase tracking-wider">● Свободная парковка активна</span>
-              </div>
+              
+              <a 
+                href="https://yandex.ru/maps/-/CPDDmCi6" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full text-center bg-red-700 hover:bg-red-800 text-white font-sans text-[10px] uppercase font-bold tracking-widest py-2.5 px-4 transition rounded-none block cursor-pointer"
+              >
+                Открыть на Яндекс.Картах
+              </a>
             </div>
           </div>
 
