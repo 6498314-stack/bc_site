@@ -32,13 +32,15 @@ export default function ApplicationForm({
   // Local errors
   const [phoneError, setPhoneError] = useState('');
   const [nameError, setNameError] = useState('');
+  const [submitError, setSubmitError] = useState('');
 
   const [ticketId, setTicketId] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setPhoneError('');
     setNameError('');
+    setSubmitError('');
 
     let hasError = false;
     if (!phone || phone.length < 7) {
@@ -54,42 +56,58 @@ export default function ApplicationForm({
 
     setIsSubmitting(true);
 
-    // Simulate sending email/posting to real backend
-    setTimeout(() => {
-      const generatedTicketId = `BC-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+    const generatedTicketId = `BC-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+
+    const request: BookingRequest = {
+      id: generatedTicketId,
+      officeId: selectedOffice?.id,
+      officeNumber: selectedOffice?.number,
+      companyName: companyName || 'Индивидуальный предприниматель',
+      contactName,
+      phone,
+      email,
+      areaRange,
+      rentDate: rentDate || new Date().toISOString().split('T')[0],
+      comments,
+      status: 'pending',
+      createdAt: new Date().toLocaleDateString('ru-RU', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      }),
+    };
+
+    try {
+      const response = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(request),
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error || 'lead_send_failed');
+      }
+
       setTicketId(generatedTicketId);
 
-      const request: BookingRequest = {
-        id: generatedTicketId,
-        officeId: selectedOffice?.id,
-        officeNumber: selectedOffice?.number,
-        companyName: companyName || 'Индивидуальный предприниматель',
-        contactName,
-        phone,
-        email,
-        areaRange,
-        rentDate: rentDate || new Date().toISOString().split('T')[0],
-        comments,
-        status: 'pending',
-        createdAt: new Date().toLocaleDateString('ru-RU', {
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit'
-        }),
-      };
-
-      // Save to localStorage
+      // Save to localStorage for the visitor-side progress drawer
       const existing = localStorage.getItem('bc_bookings');
       const bookingsList: BookingRequest[] = existing ? JSON.parse(existing) : [];
       bookingsList.unshift(request);
       localStorage.setItem('bc_bookings', JSON.stringify(bookingsList));
 
-      setIsSubmitting(false);
       setStep(2);
       onSubmitSuccess(request);
-    }, 1500);
+    } catch (error) {
+      console.error('Lead submit failed', error);
+      setSubmitError('Не удалось отправить заявку. Пожалуйста, позвоните нам по номеру +79175219421 или попробуйте еще раз.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -254,6 +272,12 @@ export default function ApplicationForm({
               </label>
             </div>
 
+            {submitError && (
+              <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 text-xs font-sans leading-relaxed">
+                {submitError}
+              </div>
+            )}
+
             <button
               type="submit"
               disabled={isSubmitting}
@@ -262,7 +286,7 @@ export default function ApplicationForm({
               {isSubmitting ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin text-white" />
-                  Обработка...
+                  Отправка...
                 </>
               ) : (
                 'ОТПРАВИТЬ ОНЛАЙН-ЗАЯВКУ'
@@ -277,7 +301,7 @@ export default function ApplicationForm({
 
             <div className="space-y-3">
               <span className="text-emerald-800 text-[10px] font-sans font-bold uppercase tracking-widest bg-emerald-50 px-3 py-1.5 rounded-none border border-emerald-200">
-                Заявка принята в обработку
+                Заявка отправлена менеджеру
               </span>
               <h4 className="text-2xl font-serif font-black italic text-stone-900">
                 Благодарим за обращение!
@@ -291,7 +315,7 @@ export default function ApplicationForm({
             </div>
 
             <p className="text-stone-600 text-xs leading-relaxed max-w-sm mx-auto">
-              В течение 10 минут менеджер отдела аренды БЦ подготовит планировочные решения, расчет договора и перезвонит вам по номеру <strong className="text-stone-900 font-bold">{phone}</strong>.
+              Менеджер отдела аренды БЦ получит заявку и перезвонит вам по номеру <strong className="text-stone-900 font-bold">{phone}</strong>.
             </p>
 
             <div className="border-t border-stone-100 pt-5 flex justify-center gap-3">
