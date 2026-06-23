@@ -106,7 +106,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                   href="tel:+79175219421"
                   className="text-white hover:text-red-500 font-serif font-bold italic text-base block transition"
                 >
-                  +7 (917) 521-94-21
+                  +79175219421
                 </a>
                 <span className="text-emerald-500 text-[9px] font-sans uppercase font-bold tracking-wider block">
                   Принимаем звонки: 09:00 - 20:00
