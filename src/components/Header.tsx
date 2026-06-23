@@ -1,11 +1,5 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import React, { useState, useEffect } from 'react';
-import { Building2, Phone, Mail, Menu, X, FileCode2, ClipboardList, Clock } from 'lucide-react';
-import { BookingRequest } from '../types';
+import { Phone, Mail, Menu, X, ClipboardList } from 'lucide-react';
 
 interface HeaderProps {
   onNavigate: (section: string) => void;
@@ -55,8 +49,6 @@ export default function Header({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-4">
-          
-          {/* Logo */}
           <button
             onClick={() => {
               onNavigate('hero');
@@ -64,15 +56,14 @@ export default function Header({
             }}
             className="flex items-center text-left focus:outline-none group cursor-pointer"
           >
-            <img 
-              src="https://allwebs.ru/images/2026/05/27/dedc6962b9764198dc2fcd5397230818.png" 
-              alt="БЦ Красносельский" 
+            <img
+              src="https://allwebs.ru/images/2026/05/27/dedc6962b9764198dc2fcd5397230818.png"
+              alt="БЦ Красносельский"
               referrerPolicy="no-referrer"
               className="h-10 md:h-12 w-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
             />
           </button>
 
-          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <button
@@ -89,15 +80,13 @@ export default function Header({
             ))}
           </nav>
 
-          {/* Right Section: Contacts, Status, CTA */}
           <div className="hidden sm:flex items-center gap-4">
-            {/* Quick Contacts */}
             <div className="flex flex-col text-right">
               <a
                 href="tel:+79175219421"
                 className="text-stone-900 hover:text-red-700 font-sans text-xs uppercase tracking-wider font-bold transition"
               >
-                +7 (917) 521-94-21
+                +79175219421
               </a>
               <span className="text-[9px] font-mono text-emerald-750 font-bold flex items-center gap-1 justify-end">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
@@ -105,7 +94,6 @@ export default function Header({
               </span>
             </div>
 
-            {/* My Bookings Trigger */}
             <button
               onClick={onOpenMyBookings}
               className="relative p-2 text-stone-700 hover:text-stone-950 hover:bg-stone-200/40 rounded-none transition cursor-pointer"
@@ -119,7 +107,6 @@ export default function Header({
               )}
             </button>
 
-            {/* CTA Book Online */}
             <button
               onClick={onRequestOpen}
               className="bg-[#1A1A1A] hover:bg-red-800 text-white py-3 px-5 uppercase text-[10px] tracking-[0.2em] font-bold hover:bg-red-800 transition-colors rounded-none cursor-pointer"
@@ -128,9 +115,7 @@ export default function Header({
             </button>
           </div>
 
-          {/* Mobile & Tablet Controls */}
           <div className="flex items-center gap-2 lg:hidden">
-            {/* My Bookings Trigger Mobile */}
             <button
               onClick={onOpenMyBookings}
               className="relative p-2 text-stone-700 hover:text-stone-950 hover:bg-stone-200/40 rounded-none transition"
@@ -150,11 +135,9 @@ export default function Header({
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
-
         </div>
       </div>
 
-      {/* Mobile Drawer */}
       {isOpen && (
         <div className="lg:hidden bg-[#F4F1EE] border-b border-stone-300 shadow-xl absolute top-full left-0 right-0 py-4 px-6 animate-fade-in">
           <div className="flex flex-col gap-2">
@@ -181,7 +164,7 @@ export default function Header({
                 className="text-stone-950 font-bold text-sm tracking-wider flex items-center gap-2"
               >
                 <Phone className="w-4 h-4 text-stone-400" />
-                +7 (917) 521-94-21
+                +79175219421
               </a>
               <a
                 href="mailto:rent@bc-krasnoselskaya.ru"
