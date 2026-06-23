@@ -24,6 +24,8 @@ export default function InteractiveMap() {
     { name: 'Магазины «Ашан» и ТЦ «Тройка»', type: 'food', distance: '4 мин на авто / 10 мин пешком', description: 'Крупный торгово-развлекательный комплекс со всей необходимой сопутствующей инфраструктурой.' },
   ];
 
+  const yandexMapUrl = 'https://yandex.ru/map-widget/v1/?ll=37.663100%2C55.779300&z=17&mode=search&text=Москва%2C%20улица%20Верхняя%20Красносельская%2C%20д.%202%2F1';
+
   return (
     <section id="map" className="py-20 md:py-28 bg-[#F4F1EE] border-t border-b border-[#1A1A1A]/10 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -113,7 +115,7 @@ export default function InteractiveMap() {
 
           <div className="lg:col-span-7 rounded-none overflow-hidden border border-[#1A1A1A]/10 relative h-[450px] lg:h-auto min-h-[400px]">
             <iframe
-              src="https://yandex.ru/map-widget/v1/?text=Москва%2C%20улица%20Верхняя%20Красносельская%2C%20д.%202%2F1"
+              src={yandexMapUrl}
               width="100%"
               height="100%"
               frameBorder="0"
