@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { OfficeSpace, BookingRequest } from '../types';
-import { Check, ClipboardCheck, Phone, Mail, Building, Landmark, Loader2, ArrowLeft } from 'lucide-react';
+import { ClipboardCheck, Phone, Building, Loader2 } from 'lucide-react';
 
 interface ApplicationFormProps {
   selectedOffice: OfficeSpace | null;
@@ -24,7 +24,6 @@ export default function ApplicationForm({
   const [companyName, setCompanyName] = useState('');
   const [contactName, setContactName] = useState('');
   const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
   const [areaRange, setAreaRange] = useState(selectedOffice ? `${selectedOffice.area} м²` : '30-100 м²');
   const [rentDate, setRentDate] = useState('');
   const [comments, setComments] = useState('');
@@ -65,7 +64,7 @@ export default function ApplicationForm({
       companyName: companyName || 'Индивидуальный предприниматель',
       contactName,
       phone,
-      email,
+      email: '',
       areaRange,
       rentDate: rentDate || new Date().toISOString().split('T')[0],
       comments,
@@ -203,43 +202,27 @@ export default function ApplicationForm({
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-1.5">
-                <label className="text-[9px] font-bold font-sans text-stone-700 uppercase tracking-widest block">Электронная почта</label>
-                <div className="relative">
-                  <Mail className="absolute left-3.5 top-3 w-4 h-4 text-stone-500" />
-                  <input
-                    type="email"
-                    placeholder="email@company.ru"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-[#F4F1EE]/65 border border-[#1A1A1A]/10 rounded-none py-2.5 pl-10 pr-4 text-xs font-sans focus:outline-none focus:border-stone-900 focus:bg-white transition"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-1.5">
-                <label className="text-[9px] font-bold font-sans text-stone-700 uppercase tracking-widest block">Желаемая площадь</label>
-                {selectedOffice ? (
-                  <input
-                    type="text"
-                    disabled
-                    value={`${selectedOffice.area} м² (Фиксированная)`}
-                    className="w-full bg-stone-100 border border-[#1A1A1A]/5 rounded-none py-2.5 px-4 text-xs font-sans text-stone-500 cursor-not-allowed font-medium"
-                  />
-                ) : (
-                  <select
-                    value={areaRange}
-                    onChange={(e) => setAreaRange(e.target.value)}
-                    className="w-full bg-[#F4F1EE]/65 border border-[#1A1A1A]/10 rounded-none py-2.5 px-3.5 text-xs font-sans focus:outline-none focus:border-stone-900 focus:bg-white transition cursor-pointer"
-                  >
-                    <option value="30-100 м²">От 30 до 100 м²</option>
-                    <option value="100-300 м²">От 100 до 300 м²</option>
-                    <option value="300-600 м²">От 300 до 600 м²</option>
-                    <option value="600-1500 м²">От 600 до 1500 м²</option>
-                  </select>
-                )}
-              </div>
+            <div className="space-y-1.5">
+              <label className="text-[9px] font-bold font-sans text-stone-700 uppercase tracking-widest block">Желаемая площадь</label>
+              {selectedOffice ? (
+                <input
+                  type="text"
+                  disabled
+                  value={`${selectedOffice.area} м² (Фиксированная)`}
+                  className="w-full bg-stone-100 border border-[#1A1A1A]/5 rounded-none py-2.5 px-4 text-xs font-sans text-stone-500 cursor-not-allowed font-medium"
+                />
+              ) : (
+                <select
+                  value={areaRange}
+                  onChange={(e) => setAreaRange(e.target.value)}
+                  className="w-full bg-[#F4F1EE]/65 border border-[#1A1A1A]/10 rounded-none py-2.5 px-3.5 text-xs font-sans focus:outline-none focus:border-stone-900 focus:bg-white transition cursor-pointer"
+                >
+                  <option value="30-100 м²">От 30 до 100 м²</option>
+                  <option value="100-300 м²">От 100 до 300 м²</option>
+                  <option value="300-600 м²">От 300 до 600 м²</option>
+                  <option value="600-1500 м²">От 600 до 1500 м²</option>
+                </select>
+              )}
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
