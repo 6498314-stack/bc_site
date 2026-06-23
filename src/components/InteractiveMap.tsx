@@ -1,10 +1,5 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import React, { useState } from 'react';
-import { MapPin, Compass, Train, Car, Coffee, Info, Check } from 'lucide-react';
+import { MapPin, Compass, Train, Car } from 'lucide-react';
 
 export default function InteractiveMap() {
   const [activeTab, setActiveTab] = useState<'walk' | 'car'>('walk');
@@ -32,8 +27,6 @@ export default function InteractiveMap() {
   return (
     <section id="map" className="py-20 md:py-28 bg-[#F4F1EE] border-t border-b border-[#1A1A1A]/10 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Intro header */}
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
           <span className="text-[10px] font-sans font-bold text-red-700 uppercase tracking-[0.25em] border border-red-700/30 px-4 py-2 bg-white inline-block rounded-none">
             Локация и транспорт
@@ -42,23 +35,18 @@ export default function InteractiveMap() {
             Отличная доступность в <span className="font-serif italic font-black text-red-700">центре Москвы</span>
           </h2>
           <p className="text-stone-600 font-sans text-xs md:text-sm leading-relaxed max-w-2xl mx-auto">
-            Мы находимся в ЦАО г. Москвы — в престижном историческом районе с развитыми узлами сообщения, 
+            Мы находимся в ЦАО г. Москвы — в престижном историческом районе с развитыми узлами сообщения,
             что делает поездки максимально комфортными для сотрудников и партнеров.
           </p>
         </div>
 
-        {/* Layout Map + Route Planner */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
-          {/* Detailed Transit Guide & Nearby Places (Left 5 Columns) */}
           <div className="lg:col-span-5 bg-white border border-[#1A1A1A]/10 rounded-none p-6 md:p-8 flex flex-col justify-between space-y-6 text-left">
-            
             <div className="space-y-4">
               <h3 className="text-xl font-serif font-bold text-[#1A1A1A] italic">
                 Как до нас добраться
               </h3>
-              
-              {/* Tabs Walk vs Drive */}
+
               <div className="grid grid-cols-2 bg-[#F4F1EE] p-1 border border-[#1A1A1A]/10 rounded-none">
                 <button
                   onClick={() => setActiveTab('walk')}
@@ -84,7 +72,6 @@ export default function InteractiveMap() {
                 </button>
               </div>
 
-              {/* Transit Steps list */}
               <div className="space-y-3.5 bg-[#F4F1EE]/40 p-4 border border-[#1A1A1A]/5 rounded-none">
                 {(activeTab === 'walk' ? walkSteps : carRoutes).map((step, idx) => (
                   <div key={idx} className="flex gap-3 text-xs md:text-sm items-start">
@@ -97,7 +84,6 @@ export default function InteractiveMap() {
               </div>
             </div>
 
-            {/* In the neighborhood cards list */}
             <div className="space-y-4 border-t border-[#1A1A1A]/10 pt-6">
               <h4 className="text-[10px] font-sans font-bold text-stone-900 uppercase tracking-widest">
                 Что находится рядом:
@@ -120,17 +106,14 @@ export default function InteractiveMap() {
             <div className="bg-[#1A1A1A] text-white rounded-none p-4 flex items-center gap-3">
               <Compass className="w-5 h-5 text-red-500 shrink-0" />
               <p className="font-mono text-[9px] uppercase tracking-wider text-stone-300 leading-normal">
-                Координаты: <strong className="text-white">55.7793, 37.6631</strong> (пропускной пункт: <strong className="text-white">+7 (917) 521-94-21</strong>).
+                Координаты: <strong className="text-white">55.7793, 37.6631</strong> (пропускной пункт: <strong className="text-white">+79175219421</strong>).
               </p>
             </div>
-
           </div>
 
-          {/* Interactive Map Iframe Embed representing Krasnoselskaya Moscow district (Right 7 columns) */}
           <div className="lg:col-span-7 rounded-none overflow-hidden border border-[#1A1A1A]/10 relative h-[450px] lg:h-auto min-h-[400px]">
-            {/* Map Frame using standardized open Yandex Maps frame showing Krasnoselskaya Metro area */}
             <iframe
-              src="https://yandex.ru/map-widget/v1/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%92%D0%B5%D1%80%D1%85%D0%BD%D1%8F%D1%8F%20%D0%11%D1%80%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B0%D1%8F%2C%20%D0%B4.%202%2F1"
+              src="https://yandex.ru/map-widget/v1/?text=Москва%2C%20улица%20Верхняя%20Красносельская%2C%20д.%202%2F1"
               width="100%"
               height="100%"
               frameBorder="0"
@@ -139,8 +122,7 @@ export default function InteractiveMap() {
               id="yandex-map-frame"
               className="absolute inset-0 select-none grayscale contrast-[0.95] hover:grayscale-0 transition duration-500"
             ></iframe>
-            
-            {/* Marker Floating Card on the map */}
+
             <div className="absolute top-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur border border-[#1A1A1A]/10 p-4 rounded-none shadow-none max-w-sm flex flex-col gap-3.5 z-10 text-left">
               <div className="flex items-center gap-3.5">
                 <div className="p-2.5 bg-[#1A1A1A] text-white rounded-none shrink-0">
@@ -152,10 +134,10 @@ export default function InteractiveMap() {
                   <span className="text-emerald-700 text-[9px] font-sans font-bold block uppercase tracking-wider">● Свободная парковка активна</span>
                 </div>
               </div>
-              
-              <a 
-                href="https://yandex.ru/maps/-/CPDDmCi6" 
-                target="_blank" 
+
+              <a
+                href="https://yandex.ru/maps/-/CPDDmCi6"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="w-full text-center bg-red-700 hover:bg-red-800 text-white font-sans text-[10px] uppercase font-bold tracking-widest py-2.5 px-4 transition rounded-none block cursor-pointer"
               >
@@ -163,9 +145,7 @@ export default function InteractiveMap() {
               </a>
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );
