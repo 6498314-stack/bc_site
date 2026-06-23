@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Building2, Phone, Mail, Clock, ShieldCheck, MapPin } from 'lucide-react';
+import { Building2, Phone, Clock, ShieldCheck, MapPin } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (section: string) => void;
@@ -110,19 +110,6 @@ export default function Footer({ onNavigate }: FooterProps) {
                 </a>
                 <span className="text-emerald-500 text-[9px] font-sans uppercase font-bold tracking-wider block">
                   Принимаем звонки: 09:00 - 20:00
-                </span>
-              </div>
-              
-              <div className="space-y-1 text-left">
-                <a
-                  href="mailto:rent@bc-krasnoselskaya.ru"
-                  className="text-stone-400 hover:text-white transition flex items-center gap-1.5"
-                >
-                  <Mail className="w-3.5 h-3.5 text-red-600" />
-                  rent@bc-krasnoselskaya.ru
-                </a>
-                <span className="text-stone-500 text-[9px] font-sans font-bold uppercase tracking-wider block">
-                  Заявки по почте: 24/7
                 </span>
               </div>
             </div>
