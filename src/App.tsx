@@ -77,6 +77,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col antialiased bg-[#FAF9F6]">
+      <style>{`html{font-size:112.5%;}body{line-height:1.55;}`}</style>
       
       {/* Dynamic Navigation Header */}
       <Header
