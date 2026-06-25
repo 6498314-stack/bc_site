@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Advantages from './components/Advantages';
+import TenantServices from './components/TenantServices';
 import OfficeSelector from './components/OfficeSelector';
 import PhotoGallery from './components/PhotoGallery';
 import InteractiveMap from './components/InteractiveMap';
@@ -101,6 +102,9 @@ export default function App() {
         
         {/* Core informational advantages */}
         <Advantages />
+
+        {/* Additional services for tenants and business */}
+        <TenantServices />
 
         {/* Custom interactive office plan selector */}
         <OfficeSelector onOfficeSelect={handleOfficeSelect} />
