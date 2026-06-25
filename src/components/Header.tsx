@@ -43,8 +43,8 @@ export default function Header({
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#F4F1EE]/95 backdrop-blur-md shadow-sm border-b border-[#1A1A1A]/15 py-3'
-          : 'bg-[#F4F1EE]/80 backdrop-blur-sm border-b border-[#1A1A1A]/10 py-4.5'
+          ? 'bg-[#F4F1EE]/95 backdrop-blur-md shadow-sm border-b border-[#1A1A1A]/15 py-2.5'
+          : 'bg-[#F4F1EE]/80 backdrop-blur-sm border-b border-[#1A1A1A]/10 py-3'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,7 +60,7 @@ export default function Header({
               src="https://allwebs.ru/images/2026/05/27/dedc6962b9764198dc2fcd5397230818.png"
               alt="БЦ Красноярд"
               referrerPolicy="no-referrer"
-              className="h-10 md:h-12 w-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
+              className="h-14 sm:h-16 lg:h-[72px] w-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
             />
           </button>
 
