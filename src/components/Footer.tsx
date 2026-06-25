@@ -9,9 +9,10 @@ import { Clock, ShieldCheck, MapPin } from 'lucide-react';
 interface FooterProps {
   onNavigate: (section: string) => void;
   onPrivacyOpen: () => void;
+  onAgreementOpen: () => void;
 }
 
-export default function Footer({ onNavigate, onPrivacyOpen }: FooterProps) {
+export default function Footer({ onNavigate, onPrivacyOpen, onAgreementOpen }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -125,7 +126,9 @@ export default function Footer({ onNavigate, onPrivacyOpen }: FooterProps) {
             <button onClick={onPrivacyOpen} className="hover:text-stone-400 transition cursor-pointer">
               Политика конфиденциальности
             </button>
-            <a href="#map" className="hover:text-stone-400 transition">Пользовательское соглашение</a>
+            <button onClick={onAgreementOpen} className="hover:text-stone-400 transition cursor-pointer">
+              Пользовательское соглашение
+            </button>
           </div>
           <p className="font-sans text-[9px] text-stone-600">
             Информация на сайте не является публичной офертой (ст. 437 ГК РФ).
