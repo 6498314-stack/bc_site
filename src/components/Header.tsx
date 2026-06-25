@@ -33,6 +33,7 @@ export default function Header({
 
   const navItems = [
     { label: 'О бизнес-центре', id: 'about' },
+    { label: 'Услуги', id: 'services' },
     { label: 'Помещения', id: 'offices' },
     { label: 'Фотографии', id: 'gallery' },
     { label: 'Карта и проезд', id: 'map' },
@@ -69,7 +70,7 @@ export default function Header({
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
-                className={`px-3.5 py-2 font-sans text-xs uppercase tracking-[0.16em] font-bold transition cursor-pointer ${
+                className={`px-3 py-2 font-sans text-[11px] uppercase tracking-[0.14em] font-bold transition cursor-pointer ${
                   activeSection === item.id
                     ? 'text-[#1A1A1A] border-b-2 border-red-700 rounded-none'
                     : 'text-stone-700 hover:text-stone-900 hover:bg-stone-200/50 rounded-none'
