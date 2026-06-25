@@ -96,7 +96,7 @@ export default function Hero({ onRentClick, onExploreClick }: HeroProps) {
               <div className="col-span-12 rounded-none overflow-hidden border border-[#1A1A1A]/10 transform hover:scale-[1.01] transition duration-300">
                 <img
                   src={IMAGES.streetView}
-                  alt="Бизнес-центр Красноярд на Красносельской"
+                  alt="Фасад БЦ Красноярд на Красносельской"
                   className="w-full h-64 md:h-80 object-cover grayscale-[10%] filter contrast-[105%]"
                   referrerPolicy="no-referrer"
                 />
@@ -114,7 +114,7 @@ export default function Hero({ onRentClick, onExploreClick }: HeroProps) {
               <div className="col-span-6 rounded-none overflow-hidden border border-[#1A1A1A]/10 transform hover:scale-[1.01] transition duration-300">
                 <img
                   src={IMAGES.officeInterior}
-                  alt="Офис с loft-отделкой"
+                  alt="Территория и корпуса БЦ Красноярд"
                   className="w-full h-40 object-cover grayscale-[10%] filter contrast-[105%]"
                   referrerPolicy="no-referrer"
                 />
