@@ -17,7 +17,7 @@ export default function Hero({ onRentClick, onExploreClick }: HeroProps) {
     { value: 'B+', label: 'Класс здания' },
     { value: '30–1500 м²', label: 'Площади офисов' },
     { value: 'от 18 500 ₽', label: 'Ставка за м²/год' },
-    { value: '3 мин', label: 'До метро' },
+    { value: '10 мин', label: 'Пешком от метро' },
   ];
 
   return (
@@ -55,7 +55,7 @@ export default function Hero({ onRentClick, onExploreClick }: HeroProps) {
               </div>
               <div className="text-xs text-left">
                 <span className="font-sans uppercase tracking-wider font-bold text-stone-950 block">ул. Верхняя Красносельская, д. 2/1</span>
-                <span className="text-stone-500 font-sans mt-0.5 block">ЦАО • рядом метро «Красносельская» • удобный выезд к ТТК</span>
+                <span className="text-stone-500 font-sans mt-0.5 block">10 минут пешком от метро «Красносельская» • удобный выезд к ТТК</span>
               </div>
             </div>
 
