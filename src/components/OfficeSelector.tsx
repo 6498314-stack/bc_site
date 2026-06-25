@@ -5,14 +5,13 @@
 
 import React, { useState } from 'react';
 import { OfficeSpace } from '../types';
-import { Eye, Info, CheckCircle2, ShieldOff, Sparkles, Building, Layers, ArrowRight } from 'lucide-react';
+import { Info, CheckCircle2, ShieldOff, Building, Layers, ArrowRight } from 'lucide-react';
 
 interface OfficeSelectorProps {
   onOfficeSelect: (office: OfficeSpace) => void;
 }
 
 const mockOffices: OfficeSpace[] = [
-  // Floor 1
   {
     id: 'o_101',
     number: '101',
@@ -22,8 +21,8 @@ const mockOffices: OfficeSpace[] = [
     status: 'free',
     type: 'Cabinet',
     windows: 'courtyard',
-    description: 'Уютный светлый офис с кирпичной стеной в стиле Лофт. Идеально под небольшое агентство или кабинет IT-команды на 6-8 рабочих мест.',
-    features: ['Приточно-вытяжная вентиляция', 'Интернет оптоволокно', 'Мягкий ковролин', 'Собственный кондиционер'],
+    description: 'Светлый кабинетный офис для небольшой команды на 6–8 рабочих мест. Подойдет для агентства, IT-команды или проектного офиса.',
+    features: ['Приточно-вытяжная вентиляция', 'Оптоволоконный интернет', 'Готовая отделка', 'Кондиционирование'],
   },
   {
     id: 'o_102',
@@ -34,7 +33,7 @@ const mockOffices: OfficeSpace[] = [
     status: 'occupied',
     type: 'OpenSpace',
     windows: 'street',
-    description: 'Просторный офис с высокими арочными окнами, выходящими на улицу.',
+    description: 'Просторный офис с высокими окнами и открытой планировкой.',
     features: ['СКУД', 'Зонирование'],
   },
   {
@@ -46,7 +45,7 @@ const mockOffices: OfficeSpace[] = [
     status: 'free',
     type: 'Cabinet',
     windows: 'courtyard',
-    description: 'Компактное камерное помещение на 4-5 рабочих мест. Напротив тихой рекреационной зоны во внутреннем дворике.',
+    description: 'Компактное помещение для 4–5 рабочих мест рядом с тихой внутренней зоной.',
     features: ['Вентиляция', 'Готовое освещение', 'Видеодомофон'],
   },
   {
@@ -61,8 +60,6 @@ const mockOffices: OfficeSpace[] = [
     description: 'Представительский офис с панорамным остеклением и индивидуальным входом.',
     features: ['Дизайнерская отделка'],
   },
-  
-  // Floor 2
   {
     id: 'o_201',
     number: '201',
@@ -72,8 +69,8 @@ const mockOffices: OfficeSpace[] = [
     status: 'free',
     type: 'Cabinet',
     windows: 'street',
-    description: 'Стильный угловой кабинет на 5-7 человек. Много естественного света благодаря двойному остеклению.',
-    features: ['Регулировка отопления', 'Оптическое волокно 1Гб/с', 'Сигнализация'],
+    description: 'Угловой кабинет на 5–7 человек с хорошим естественным освещением.',
+    features: ['Регулировка отопления', 'Оптоволокно', 'Сигнализация'],
   },
   {
     id: 'o_202',
@@ -84,8 +81,8 @@ const mockOffices: OfficeSpace[] = [
     status: 'free',
     type: 'Cabinet',
     windows: 'courtyard',
-    description: 'Просторный двухкомнатный блок с возможностью обустройства приемной или кабинета руководителя.',
-    features: ['Приточная вентиляция', 'Качественный ремонт Loft', 'Кухонный уголок'],
+    description: 'Двухкомнатный офисный блок с возможностью организовать приемную или кабинет руководителя.',
+    features: ['Приточная вентиляция', 'Loft-отделка', 'Кухонный уголок'],
   },
   {
     id: 'o_203',
@@ -96,8 +93,8 @@ const mockOffices: OfficeSpace[] = [
     status: 'free',
     type: 'OpenSpace',
     windows: 'panoramic',
-    description: 'Изумительный просторный Open-Space, вмещающий до 45-50 сотрудников. Высота потолков 3.6 метра, панорамные виды на улочки Красносельского района.',
-    features: ['Зона кухни с выводами воды', '2 переговорные комнаты в блоке', 'Мультизональный климат-контроль', 'Встроенная серверная стойка'],
+    description: 'Большой open-space для команды до 45–50 сотрудников. Возможна гибкая расстановка рабочих мест и переговорных зон.',
+    features: ['Зона кухни', '2 переговорные', 'Климат-контроль', 'Серверная зона'],
   },
   {
     id: 'o_204',
@@ -111,8 +108,6 @@ const mockOffices: OfficeSpace[] = [
     description: 'Конференц-зона или лекторий.',
     features: ['Шумоизоляция'],
   },
-
-  // Floor 3
   {
     id: 'o_301',
     number: '301',
@@ -122,8 +117,8 @@ const mockOffices: OfficeSpace[] = [
     status: 'free',
     type: 'OpenSpace',
     windows: 'courtyard',
-    description: 'Сбалансированный офис формата Open-Space с собственным санузлом и переговоркой. Тихая сторона, вид на зеленый дворик.',
-    features: ['Подвесные светильники', 'Скоростной Wi-Fi', 'Магнитный замок'],
+    description: 'Сбалансированный офис open-space с тихой стороной и видом во двор.',
+    features: ['Подвесные светильники', 'Wi-Fi', 'Магнитный замок'],
   },
   {
     id: 'o_302',
@@ -134,8 +129,8 @@ const mockOffices: OfficeSpace[] = [
     status: 'free',
     type: 'OpenSpace',
     windows: 'street',
-    description: 'Великолепный Loft-офис с высокими потолками (3.8м) и открытыми инженерными конструкциями. Индивидуальный дизайн-код.',
-    features: ['Потолки 3.8м', 'Центральное охлаждение', 'Светодиодное акцентное освещение', 'Покрытие антипыль'],
+    description: 'Loft-офис с высокими потолками и открытыми инженерными конструкциями.',
+    features: ['Потолки 3.8 м', 'Центральное охлаждение', 'Акцентное освещение'],
   },
   {
     id: 'o_303',
@@ -146,7 +141,7 @@ const mockOffices: OfficeSpace[] = [
     status: 'booked',
     type: 'Cabinet',
     windows: 'street',
-    description: 'Уютный кабинет с дизайнерской мебелью.',
+    description: 'Кабинетный офис с готовой мебельной расстановкой.',
     features: ['Меблировка'],
   },
   {
@@ -158,11 +153,9 @@ const mockOffices: OfficeSpace[] = [
     status: 'occupied',
     type: 'EntireFloor',
     windows: 'panoramic',
-    description: 'Полный этаж в левом крыле.',
+    description: 'Полный этаж в левом крыле здания.',
     features: ['Премиум доступ'],
   },
-
-  // Floor 4 (Penthouse level with roof features)
   {
     id: 'o_402',
     number: '402',
@@ -172,8 +165,8 @@ const mockOffices: OfficeSpace[] = [
     status: 'free',
     type: 'OpenSpace',
     windows: 'panoramic',
-    description: 'Абсолютный флагман БЦ. Офис мансардного типа на последнем этаже с зенитными окнами и прямым выходом на благоустроенную крышу бизнес-центра.',
-    features: ['Эксклюзивный доступ на террасу', 'Мансардные скошенные потолки', 'Дизайнерские люстры', 'Супер-акустика'],
+    description: 'Мансардный офис на верхнем этаже с зенитными окнами и выразительной архитектурой.',
+    features: ['Доступ на террасу', 'Мансардные потолки', 'Дизайнерское освещение'],
   },
   {
     id: 'o_403',
@@ -184,8 +177,8 @@ const mockOffices: OfficeSpace[] = [
     status: 'free',
     type: 'OpenSpace',
     windows: 'courtyard',
-    description: 'Шикарный мансардный лофт на 15-20 рабочих мест. Скаты крыши отделаны сосновым брусом, создающим невероятный рабочий уют.',
-    features: ['Отделка эко-деревом', 'Мультизонный кондиционер', 'Ролл-шторы на пульте управления'],
+    description: 'Мансардный loft для 15–20 рабочих мест с теплой отделкой и спокойной атмосферой.',
+    features: ['Отделка деревом', 'Кондиционирование', 'Ролл-шторы'],
   },
   {
     id: 'o_404',
@@ -196,8 +189,8 @@ const mockOffices: OfficeSpace[] = [
     status: 'free',
     type: 'MeetingRoom',
     windows: 'courtyard',
-    description: 'Многофункциональный зал-переговорная, который можно использовать как собственный лекторий, тренинговую зону или стильный офис.',
-    features: ['Маркерные стены', 'Подготовка под видеопроектор', 'Акустические панели'],
+    description: 'Многофункциональное помещение под переговорную, тренинг-зону или офис.',
+    features: ['Маркерные стены', 'Подготовка под проектор', 'Акустические панели'],
   }
 ];
 
@@ -212,17 +205,10 @@ export default function OfficeSelector({ onOfficeSelect }: OfficeSelectorProps) 
   const selectFloor = (floor: number) => {
     setSelectedFloor(floor);
     const firstFreeOnFloor = mockOffices.find(o => o.floor === floor && o.status === 'free');
-    if (firstFreeOnFloor) {
-      setActiveOffice(firstFreeOnFloor);
-    } else {
-      const anyOnFloor = mockOffices.find(o => o.floor === floor);
-      setActiveOffice(anyOnFloor || null);
-    }
+    setActiveOffice(firstFreeOnFloor || mockOffices.find(o => o.floor === floor) || null);
   };
 
-  const calculateMonthlyPrice = (office: OfficeSpace) => {
-    return Math.round((office.area * office.pricePerSqmYear) / 12);
-  };
+  const calculateMonthlyPrice = (office: OfficeSpace) => Math.round((office.area * office.pricePerSqmYear) / 12);
 
   const getStatusText = (status: 'free' | 'booked' | 'occupied') => {
     switch (status) {
@@ -235,44 +221,64 @@ export default function OfficeSelector({ onOfficeSelect }: OfficeSelectorProps) 
   const getStatusClass = (status: 'free' | 'booked' | 'occupied', isActive: boolean) => {
     if (isActive) {
       switch (status) {
-        case 'free': return 'fill-emerald-500/30 stroke-emerald-600 stroke-2';
-        case 'booked': return 'fill-amber-500/30 stroke-amber-600 stroke-2';
-        case 'occupied': return 'fill-rose-500/20 stroke-rose-600 stroke-2';
+        case 'free': return 'fill-[#DED4CB] stroke-red-700 stroke-2';
+        case 'booked': return 'fill-[#E8DDCF] stroke-stone-600 stroke-2';
+        case 'occupied': return 'fill-stone-200 stroke-stone-500 stroke-2';
       }
     }
     switch (status) {
-      case 'free': return 'fill-emerald-100/50 hover:fill-[#E3DEC6] stroke-emerald-500 stroke-[1.5] cursor-pointer';
-      case 'booked': return 'fill-amber-50/50 hover:fill-amber-100 stroke-amber-400 stroke-[1.5] cursor-not-allowed';
-      case 'occupied': return 'fill-stone-200/40 stroke-stone-300 stroke-[1.5] cursor-not-allowed';
+      case 'free': return 'fill-[#F4F1EE] hover:fill-[#DED4CB] stroke-stone-500 stroke-[1.5] cursor-pointer';
+      case 'booked': return 'fill-[#EEE7DE] hover:fill-[#E7DED2] stroke-stone-400 stroke-[1.5] cursor-not-allowed';
+      case 'occupied': return 'fill-stone-200/70 stroke-stone-300 stroke-[1.5] cursor-not-allowed';
     }
   };
 
+  const getOfficeByEnding = (ending: string) => currentFloorOffices.find(o => o.number.endsWith(ending));
+
+  const renderOffice = (ending: string, d: string, x: number, y1: number, y2: number) => {
+    const office = getOfficeByEnding(ending);
+    return (
+      <g>
+        <path
+          d={d}
+          className={`transition-all duration-300 ${getStatusClass(office?.status || 'occupied', activeOffice?.number.endsWith(ending) || false)}`}
+          onClick={() => {
+            if (office) setActiveOffice(office);
+          }}
+        />
+        <text x={x} y={y1} textAnchor="middle" className="fill-[#1A1A1A] font-sans font-bold pointer-events-none text-base">
+          Офис {selectedFloor}{ending}
+        </text>
+        <text x={x} y={y2} textAnchor="middle" className="fill-stone-600 font-sans text-[10px] uppercase tracking-wider pointer-events-none font-bold">
+          {office?.area || 0} м² • {office?.type === 'Cabinet' ? 'Кабинет' : office?.type === 'MeetingRoom' ? 'Переговорная' : 'Open Space'}
+        </text>
+      </g>
+    );
+  };
+
   return (
-    <section id="offices" className="py-20 md:py-28 bg-[#FFFFFF] scroll-mt-20 border-b border-[#1A1A1A]/10">
+    <section id="offices" className="py-20 md:py-28 bg-white scroll-mt-20 border-b border-[#1A1A1A]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Title Heading */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#1A1A1A]/10 pb-10 mb-12">
           <div className="space-y-3 text-left">
-            <span className="text-[10px] font-sans font-bold text-red-700 uppercase tracking-[0.25em] border border-red-700/30 px-4 py-2 bg-transparent inline-block rounded-none">
-              Интерактивная панель выбора
+            <span className="text-[10px] font-sans font-bold text-stone-800 uppercase tracking-[0.22em] border border-[#1A1A1A]/20 px-4 py-2 bg-transparent inline-block rounded-none">
+              Помещения и планировки
             </span>
-            <h2 className="text-3xl md:text-5xl font-serif font-light text-stone-900 tracking-tight leading-tight">
-              Интерактивный выбор <br />
-              <span className="font-serif italic font-black text-red-700">офиса по этажам</span>
+            <h2 className="text-3xl md:text-5xl font-serif font-bold text-stone-900 tracking-tight leading-tight">
+              Интерактивный выбор помещений
             </h2>
             <p className="text-stone-600 font-sans text-xs md:text-sm max-w-2xl leading-relaxed">
-              Выберите интересующий Вас этаж, наведите курсор на интерактивную планировку этажа, изучите параметры и подайте онлайн-заявку.
+              Выберите этаж и помещение на схеме, чтобы посмотреть параметры и оставить заявку менеджеру отдела аренды.
             </p>
           </div>
           
-          {/* Floor Toggles */}
           <div className="flex items-center bg-[#F4F1EE] border border-[#1A1A1A]/10 p-1 rounded-none self-start md:self-auto shrink-0">
             {[1, 2, 3, 4].map((fl) => (
               <button
                 key={fl}
                 onClick={() => selectFloor(fl)}
-                className={`px-4.5 py-2.5 rounded-none font-sans font-bold text-xs uppercase tracking-[0.18em] transition cursor-pointer ${
+                className={`px-4 py-2.5 rounded-none font-sans font-bold text-xs uppercase tracking-[0.16em] transition cursor-pointer ${
                   selectedFloor === fl
                     ? 'bg-[#1A1A1A] text-white shadow-none'
                     : 'text-stone-700 hover:text-stone-900 hover:bg-stone-200/50'
@@ -284,223 +290,126 @@ export default function OfficeSelector({ onOfficeSelect }: OfficeSelectorProps) 
           </div>
         </div>
 
-        {/* Floor quick metrics */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 text-left">
           <div className="bg-[#F4F1EE] border border-[#1A1A1A]/10 p-4 rounded-none">
             <span className="text-stone-550 text-[10px] block font-bold uppercase tracking-wider font-sans">Свободно помещений</span>
-            <span className="text-stone-900 font-serif font-black italic text-xl sm:text-2xl mt-1 block">{freeOfficesCount}</span>
+            <span className="text-stone-900 font-sans font-extrabold text-xl sm:text-2xl mt-1 block">{freeOfficesCount}</span>
           </div>
           <div className="bg-[#F4F1EE] border border-[#1A1A1A]/10 p-4 rounded-none">
-            <span className="text-stone-550 text-[10px] block font-bold uppercase tracking-wider font-sans">Свободная площадь этажа</span>
-            <span className="text-stone-900 font-serif font-black italic text-xl sm:text-2xl mt-1 block">{totalFreeArea} м²</span>
+            <span className="text-stone-550 text-[10px] block font-bold uppercase tracking-wider font-sans">Свободная площадь</span>
+            <span className="text-stone-900 font-sans font-extrabold text-xl sm:text-2xl mt-1 block">{totalFreeArea} м²</span>
           </div>
           <div className="bg-[#F4F1EE] border border-[#1A1A1A]/10 p-4 rounded-none">
             <span className="text-stone-550 text-[10px] block font-bold uppercase tracking-wider font-sans">Высота потолков</span>
-            <span className="text-stone-900 font-serif font-black italic text-xl sm:text-2xl mt-1 block">{selectedFloor === 4 ? '3.8м' : '3.6м'}</span>
+            <span className="text-stone-900 font-sans font-extrabold text-xl sm:text-2xl mt-1 block">{selectedFloor === 4 ? '3.8 м' : '3.6 м'}</span>
           </div>
           <div className="bg-[#F4F1EE] border border-[#1A1A1A]/10 p-4 rounded-none">
             <span className="text-stone-550 text-[10px] block font-bold uppercase tracking-wider font-sans">Тип планировок</span>
-            <span className="text-stone-800 font-sans text-xs sm:text-sm mt-2 block font-bold truncate">Loft открытый, кабинеты</span>
+            <span className="text-stone-800 font-sans text-xs sm:text-sm mt-2 block font-bold truncate">Open-space и кабинеты</span>
           </div>
         </div>
 
-        {/* Interactive Workspace Panel */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          {/* Vector Blueprint Plotter (Left 7 Columns) */}
-          <div className="lg:col-span-7 bg-[#F4F1EE] border border-[#1A1A1A]/10 rounded-none p-6 md:p-10 flex flex-col justify-between h-[450px] md:h-[500px]">
-            <div className="flex items-center justify-between border-b border-[#1A1A1A]/10 pb-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          <div className="bg-[#F4F1EE] border border-[#1A1A1A]/10 rounded-none p-6 md:p-8 flex flex-col justify-between min-h-[520px]">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-[#1A1A1A]/10 pb-4">
               <span className="text-[10px] font-sans font-bold text-stone-600 flex items-center gap-1.5 uppercase tracking-wider">
                 <Layers className="w-4 h-4 text-stone-500" />
-                Интерактивный чертеж • {selectedFloor} этаж
+                Планировка • {selectedFloor} этаж
               </span>
-              <div className="flex gap-3 text-[9px] font-sans font-bold uppercase tracking-wider">
-                <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-none bg-emerald-500/20 inline-block border border-[#1A1A1A]/20"></span>Свободно</span>
-                <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-none bg-amber-500/20 inline-block border border-amber-600"></span>Бронь</span>
+              <div className="flex flex-wrap gap-3 text-[9px] font-sans font-bold uppercase tracking-wider">
+                <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-none bg-[#F4F1EE] inline-block border border-stone-500"></span>Свободно</span>
+                <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-none bg-[#E8DDCF] inline-block border border-stone-500"></span>Бронь</span>
                 <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-none bg-stone-300 inline-block border border-stone-400"></span>Сдано</span>
               </div>
             </div>
 
-            {/* SVG Interactive Architecture Grid */}
             <div className="flex-1 flex items-center justify-center my-6 relative">
               <svg viewBox="0 0 800 400" className="w-full max-w-xl h-auto drop-shadow-none">
-                {/* Outer frame representing building footprint */}
                 <rect x="10" y="10" width="780" height="380" rx="0" className="fill-[#F4F1EE] stroke-[#1A1A1A]/25 stroke-2" />
-                {/* Central common hallway */}
                 <rect x="50" y="180" width="700" height="40" className="fill-stone-200/50 stroke-stone-300/50" />
                 <text x="400" y="204" textAnchor="middle" className="fill-stone-500 font-sans text-[10px] font-bold uppercase tracking-[0.2em]">
-                  Центральный Холл и коридор
+                  Центральный холл и коридор
                 </text>
-
-                {/* Office Polygons mapping based on local coordinate indexes */}
-                {/* Top offices (Numbered 1-2) */}
-                <g>
-                  {/* Top-Left: Office X01 */}
-                  <path
-                    d="M 50,50 L 320,50 L 320,180 L 50,180 Z"
-                    className={`transition-all duration-300 ${getStatusClass(
-                      currentFloorOffices.find(o => o.number.endsWith('01'))?.status || 'occupied',
-                      activeOffice?.number.endsWith('01') || false
-                    )}`}
-                    onClick={() => {
-                      const o = currentFloorOffices.find(o => o.number.endsWith('01'));
-                      if (o) setActiveOffice(o);
-                    }}
-                  />
-                  <text x="185" y="115" textAnchor="middle" className="fill-[#1A1A1A] font-serif font-bold pointer-events-none text-lg italic">
-                    Офис {selectedFloor}01 {currentFloorOffices.find(o => o.number.endsWith('01'))?.status === 'free' ? '✔️' : ''}
-                  </text>
-                  <text x="185" y="140" textAnchor="middle" className="fill-stone-600 font-sans text-[10px] uppercase tracking-wider pointer-events-none font-bold">
-                    {currentFloorOffices.find(o => o.number.endsWith('01'))?.area || 0} м² • {currentFloorOffices.find(o => o.number.endsWith('01'))?.type === 'Cabinet' ? 'Кабинет' : 'Open Space'}
-                  </text>
-                </g>
-
-                <g>
-                  {/* Top-Right: Office X02 */}
-                  <path
-                    d="M 320,50 L 750,50 L 750,180 L 320,180 Z"
-                    className={`transition-all duration-300 ${getStatusClass(
-                      currentFloorOffices.find(o => o.number.endsWith('02'))?.status || 'occupied',
-                      activeOffice?.number.endsWith('02') || false
-                    )}`}
-                    onClick={() => {
-                      const o = currentFloorOffices.find(o => o.number.endsWith('02'));
-                      if (o) setActiveOffice(o);
-                    }}
-                  />
-                  <text x="535" y="115" textAnchor="middle" className="fill-[#1A1A1A] font-serif font-bold pointer-events-none text-lg italic">
-                    Офис {selectedFloor}02 {currentFloorOffices.find(o => o.number.endsWith('02'))?.status === 'free' ? '✔️' : ''}
-                  </text>
-                  <text x="535" y="140" textAnchor="middle" className="fill-stone-600 font-sans text-[10px] uppercase tracking-wider pointer-events-none font-bold">
-                    {currentFloorOffices.find(o => o.number.endsWith('02'))?.area || 0} м² • {currentFloorOffices.find(o => o.number.endsWith('02'))?.type === 'Cabinet' ? 'Кабинет' : 'Open Space'}
-                  </text>
-                </g>
-
-                {/* Bottom offices (Numbered 3-4) */}
-                <g>
-                  {/* Bottom-Left: Office X03 */}
-                  <path
-                    d="M 50,220 L 380,220 L 380,350 L 50,350 Z"
-                    className={`transition-all duration-300 ${getStatusClass(
-                      currentFloorOffices.find(o => o.number.endsWith('03'))?.status || 'occupied',
-                      activeOffice?.number.endsWith('03') || false
-                    )}`}
-                    onClick={() => {
-                      const o = currentFloorOffices.find(o => o.number.endsWith('03'));
-                      if (o) setActiveOffice(o);
-                    }}
-                  />
-                  <text x="215" y="285" textAnchor="middle" className="fill-[#1A1A1A] font-serif font-bold pointer-events-none text-lg italic">
-                    Офис {selectedFloor}03 {currentFloorOffices.find(o => o.number.endsWith('03'))?.status === 'free' ? '✔️' : ''}
-                  </text>
-                  <text x="215" y="310" textAnchor="middle" className="fill-stone-600 font-sans text-[10px] uppercase tracking-wider pointer-events-none font-bold">
-                    {currentFloorOffices.find(o => o.number.endsWith('03'))?.area || 0} м² • {currentFloorOffices.find(o => o.number.endsWith('03'))?.type === 'Cabinet' ? 'Кабинет' : 'Open Space'}
-                  </text>
-                </g>
-
-                <g>
-                  {/* Bottom-Right: Office X04 */}
-                  <path
-                    d="M 380,220 L 750,220 L 750,350 L 380,350 Z"
-                    className={`transition-all duration-300 ${getStatusClass(
-                      currentFloorOffices.find(o => o.number.endsWith('04'))?.status || 'occupied',
-                      activeOffice?.number.endsWith('04') || false
-                    )}`}
-                    onClick={() => {
-                      const o = currentFloorOffices.find(o => o.number.endsWith('04'));
-                      if (o) setActiveOffice(o);
-                    }}
-                  />
-                  <text x="565" y="285" textAnchor="middle" className="fill-[#1A1A1A] font-serif font-bold pointer-events-none text-lg italic">
-                    Офис {selectedFloor}04 {currentFloorOffices.find(o => o.number.endsWith('04'))?.status === 'free' ? '✔️' : ''}
-                  </text>
-                  <text x="565" y="310" textAnchor="middle" className="fill-stone-600 font-sans text-[10px] uppercase tracking-wider pointer-events-none font-bold">
-                    {currentFloorOffices.find(o => o.number.endsWith('04'))?.area || 0} м² • {currentFloorOffices.find(o => o.number.endsWith('04'))?.type === 'Cabinet' ? 'Кабинет' : 'Open Space'}
-                  </text>
-                </g>
+                {renderOffice('01', 'M 50,50 L 320,50 L 320,180 L 50,180 Z', 185, 115, 140)}
+                {renderOffice('02', 'M 320,50 L 750,50 L 750,180 L 320,180 Z', 535, 115, 140)}
+                {renderOffice('03', 'M 50,220 L 380,220 L 380,350 L 50,350 Z', 215, 285, 310)}
+                {renderOffice('04', 'M 380,220 L 750,220 L 750,350 L 380,350 Z', 565, 285, 310)}
               </svg>
             </div>
 
-            <div className="flex items-center gap-2 bg-[#E2DDD9] rounded-none px-4 py-3 text-xs text-stone-700 font-medium">
-              <Info className="w-4 h-4 text-red-700 shrink-0" />
-              <span>Кликните на выделенные элементы планировки, чтобы переключить активный офис</span>
+            <div className="flex items-center gap-2 bg-white rounded-none px-4 py-3 text-xs text-stone-700 font-medium border border-[#1A1A1A]/10">
+              <Info className="w-4 h-4 text-stone-500 shrink-0" />
+              <span>Кликните на помещение на схеме, чтобы посмотреть параметры справа</span>
             </div>
           </div>
 
-          {/* Details Sidebar Card (Right 5 Columns) */}
-          <div className="lg:col-span-5">
+          <div className="min-h-[520px]">
             {activeOffice ? (
-              <div className="bg-[#F4F1EE] border border-[#1A1A1A]/10 rounded-none p-6 md:p-8 space-y-6">
-                
-                {/* Office Title Details */}
-                <div className="flex items-start justify-between border-b border-[#1A1A1A]/10 pb-5">
-                  <div className="space-y-1 text-left">
-                    <span className="text-[9px] uppercase font-sans tracking-[0.22em] bg-[#1A1A1A] text-white px-2 py-0.5 rounded-none font-bold">
-                      ПОМЕЩЕНИЕ {activeOffice.number}
+              <div className="bg-[#F4F1EE] border border-[#1A1A1A]/10 rounded-none p-6 md:p-8 space-y-6 h-full flex flex-col">
+                <div className="flex items-start justify-between border-b border-[#1A1A1A]/10 pb-5 gap-4">
+                  <div className="space-y-2 text-left">
+                    <span className="text-[9px] uppercase font-sans tracking-[0.2em] border border-[#1A1A1A]/20 text-stone-700 px-2 py-1 rounded-none font-bold inline-block">
+                      Помещение {activeOffice.number}
                     </span>
-                    <h4 className="text-xl font-serif font-bold text-stone-900 mt-1.5 italic">
+                    <h4 className="text-xl font-sans font-bold text-stone-900 mt-1.5">
                       Офис на {activeOffice.floor} этаже
                     </h4>
                   </div>
                   
                   <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-none text-[10px] uppercase tracking-wider font-sans font-bold ${
                     activeOffice.status === 'free'
-                      ? 'bg-emerald-50 text-emerald-850 border border-emerald-200'
+                      ? 'bg-white text-stone-900 border border-red-700/30'
                       : activeOffice.status === 'booked'
-                        ? 'bg-amber-50 text-amber-850 border border-amber-200'
-                        : 'bg-stone-350 text-stone-700 font-bold'
+                        ? 'bg-white text-stone-700 border border-stone-300'
+                        : 'bg-stone-200 text-stone-600 font-bold'
                   }`}>
-                    {activeOffice.status === 'free' && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />}
+                    {activeOffice.status === 'free' && <CheckCircle2 className="w-3.5 h-3.5 text-red-700" />}
                     {getStatusText(activeOffice.status)}
                   </span>
                 </div>
 
-                {/* Main parameters grids */}
                 <div className="grid grid-cols-2 gap-4 text-left">
                   <div className="bg-white border border-[#1A1A1A]/5 p-3.5 rounded-none">
                     <span className="text-stone-550 text-[9px] block font-bold uppercase tracking-wider font-sans">Площадь</span>
-                    <span className="text-stone-900 font-serif font-black italic text-base block mt-0.5">{activeOffice.area} м²</span>
+                    <span className="text-stone-900 font-sans font-extrabold text-base block mt-0.5">{activeOffice.area} м²</span>
                   </div>
                   <div className="bg-white border border-[#1A1A1A]/5 p-3.5 rounded-none">
                     <span className="text-stone-550 text-[9px] block font-bold uppercase tracking-wider font-sans">Формат</span>
-                    <span className="text-stone-900 text-xs font-bold block mt-1 truncate">{activeOffice.type === 'Cabinet' ? 'Кабинетный' : activeOffice.type === 'OpenSpace' ? 'Open-Space' : 'Конференц-зал'}</span>
+                    <span className="text-stone-900 text-xs font-bold block mt-1 truncate">{activeOffice.type === 'Cabinet' ? 'Кабинетный' : activeOffice.type === 'OpenSpace' ? 'Open-space' : activeOffice.type === 'EntireFloor' ? 'Этаж целиком' : 'Переговорная'}</span>
                   </div>
                   <div className="bg-white border border-[#1A1A1A]/5 p-3.5 rounded-none col-span-2">
-                    <span className="text-stone-550 text-[9px] block font-bold uppercase tracking-wider font-sans">Окна выходят</span>
+                    <span className="text-stone-550 text-[9px] block font-bold uppercase tracking-wider font-sans">Окна</span>
                     <span className="text-stone-900 text-xs font-bold block mt-1">
-                      {activeOffice.windows === 'courtyard' ? 'Во внутренний тихий дворик (Солнечная сторона)' : activeOffice.windows === 'street' ? 'На улицу Краснопрудная (Классический вид)' : 'Панорамные мансардные окна (Эксклюзив)'}
+                      {activeOffice.windows === 'courtyard' ? 'Во внутренний тихий двор' : activeOffice.windows === 'street' ? 'На улицу' : 'Панорамные / мансардные окна'}
                     </span>
                   </div>
                 </div>
 
-                {/* Price indicators */}
-                <div className="bg-red-50/20 border border-red-700/15 p-4.5 rounded-none text-left">
-                  <div className="flex justify-between items-baseline mb-1">
+                <div className="bg-white border border-red-700/15 p-4 rounded-none text-left">
+                  <div className="flex justify-between items-baseline mb-1 gap-4">
                     <span className="text-stone-600 text-[10px] uppercase tracking-wider font-sans font-bold">Ставка за м² в год:</span>
-                    <span className="text-stone-900 font-mono text-xs font-bold">{activeOffice.pricePerSqmYear.toLocaleString('ru')} ₽</span>
+                    <span className="text-stone-900 text-xs font-bold">{activeOffice.pricePerSqmYear.toLocaleString('ru')} ₽</span>
                   </div>
-                  <div className="flex justify-between items-baseline border-t border-[#1A1A1A]/10 pt-2.5 mt-2.5">
+                  <div className="flex justify-between items-baseline border-t border-[#1A1A1A]/10 pt-2.5 mt-2.5 gap-4">
                     <span className="text-stone-650 text-xs font-sans uppercase tracking-wider font-bold">Итого за месяц:</span>
-                    <span className="text-[#1A1A1A] font-serif font-black text-xl md:text-2xl italic">
+                    <span className="text-[#1A1A1A] font-sans font-extrabold text-xl md:text-2xl">
                       {calculateMonthlyPrice(activeOffice).toLocaleString('ru')} ₽ <span className="text-[10px] font-sans font-medium text-stone-500 lowercase">/ мес</span>
                     </span>
                   </div>
                   <span className="text-[9px] text-stone-400 block mt-2 text-right">
-                    * Прямая аренда, без комиссии брокерам. НДС включен или УСН.
+                    * Прямая аренда, без комиссии брокерам.
                   </span>
                 </div>
 
-                {/* Description */}
                 <div className="space-y-2 text-left">
-                  <span className="text-stone-850 text-[10px] uppercase tracking-wider font-bold font-sans block">Описание объекта</span>
+                  <span className="text-stone-850 text-[10px] uppercase tracking-wider font-bold font-sans block">Описание</span>
                   <p className="text-stone-600 text-xs leading-relaxed font-sans">
                     {activeOffice.description}
                   </p>
                 </div>
 
-                {/* Features Checklist */}
                 {activeOffice.features && activeOffice.features.length > 0 && (
-                  <div className="space-y-4 pb-2 text-left">
+                  <div className="space-y-4 pb-2 text-left flex-grow">
                     <span className="text-stone-850 text-[10px] uppercase tracking-wider font-bold font-sans block">Комплектация и удобства</span>
                     <div className="grid grid-cols-1 gap-2">
                       {activeOffice.features.map((f, i) => (
@@ -513,25 +422,23 @@ export default function OfficeSelector({ onOfficeSelect }: OfficeSelectorProps) 
                   </div>
                 )}
 
-                {/* CTA Action */}
                 {activeOffice.status === 'free' ? (
                   <button
                     onClick={() => onOfficeSelect(activeOffice)}
-                    className="w-full bg-[#1A1A1A] hover:bg-red-800 text-white font-sans text-xs uppercase tracking-[0.25em] font-bold py-4 rounded-none transition flex items-center justify-center gap-1.5 cursor-pointer shadow-none"
+                    className="w-full bg-red-700 hover:bg-red-800 text-white font-sans text-xs uppercase tracking-[0.22em] font-bold py-4 rounded-none transition flex items-center justify-center gap-1.5 cursor-pointer shadow-none mt-auto"
                   >
-                    Забронировать офис {activeOffice.number}
+                    Оставить заявку
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 ) : (
-                  <div className="w-full bg-stone-200 text-stone-550 font-sans text-xs uppercase tracking-[0.2em] font-bold py-4 rounded-none flex items-center justify-center gap-2 cursor-not-allowed">
+                  <div className="w-full bg-stone-200 text-stone-550 font-sans text-xs uppercase tracking-[0.18em] font-bold py-4 rounded-none flex items-center justify-center gap-2 cursor-not-allowed mt-auto">
                     <ShieldOff className="w-4 h-4 text-stone-400" />
                     Офис забронирован или арендован
                   </div>
                 )}
-
               </div>
             ) : (
-              <div className="bg-[#F4F1EE] border border-[#1A1A1A]/10 rounded-none p-10 text-center flex flex-col items-center justify-center h-full">
+              <div className="bg-[#F4F1EE] border border-[#1A1A1A]/10 rounded-none p-10 text-center flex flex-col items-center justify-center h-full min-h-[520px]">
                 <Building className="w-10 h-10 text-stone-400 mb-2.5" />
                 <span className="text-stone-500 text-sm font-medium font-sans">Для вывода параметров выберите любой свободный офис</span>
               </div>
