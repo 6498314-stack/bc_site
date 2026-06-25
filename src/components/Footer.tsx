@@ -85,14 +85,14 @@ export default function Footer({ onNavigate, onPrivacyOpen }: FooterProps) {
                 <MapPin className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
                 <div className="text-left">
                   <span className="text-stone-100 font-bold block">ул. Верхняя Красносельская, д. 2/1</span>
-                  <span className="text-stone-500 text-[11px] block mt-0.5">Москва • рядом с метро «Красносельская»</span>
+                  <span className="text-stone-500 text-[11px] block mt-0.5">Москва • метро «Красносельская»</span>
                 </div>
               </li>
               <li className="flex items-center gap-2.5 text-left">
                 <Clock className="w-4 h-4 text-red-600 shrink-0" />
                 <div className="text-left">
-                  <span className="text-stone-100 font-bold block">3 минуты пешком</span>
-                  <span className="text-stone-500 text-[11px] block">до станции метро</span>
+                  <span className="text-stone-100 font-bold block">10 минут пешком</span>
+                  <span className="text-stone-500 text-[11px] block">от метро «Красносельская»</span>
                 </div>
               </li>
             </ul>
