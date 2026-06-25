@@ -11,6 +11,7 @@ import OfficeSelector from './components/OfficeSelector';
 import PhotoGallery from './components/PhotoGallery';
 import InteractiveMap from './components/InteractiveMap';
 import ApplicationForm from './components/ApplicationForm';
+import PrivacyPolicy from './components/PrivacyPolicy';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import { OfficeSpace, BookingRequest } from './types';
@@ -20,6 +21,7 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('hero');
   const [selectedOffice, setSelectedOffice] = useState<OfficeSpace | null>(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
   const [isMyBookingsOpen, setIsMyBookingsOpen] = useState(false);
   const [bookings, setBookings] = useState<BookingRequest[]>([]);
 
@@ -115,7 +117,7 @@ export default function App() {
       </main>
 
       {/* Footer contacts & compliance */}
-      <Footer onNavigate={handleNavigate} />
+      <Footer onNavigate={handleNavigate} onPrivacyOpen={() => setIsPrivacyOpen(true)} />
 
       {/* Dialog Overlay Modal: Rent Booking Request Form */}
       {isFormOpen && (
@@ -127,6 +129,13 @@ export default function App() {
               onSubmitSuccess={handleBookingSubmit}
             />
           </div>
+        </div>
+      )}
+
+      {/* Privacy Policy Modal */}
+      {isPrivacyOpen && (
+        <div className="fixed inset-0 z-[60] overflow-y-auto bg-[#1A1A1A]/70 backdrop-blur-sm flex items-center justify-center p-4">
+          <PrivacyPolicy onClose={() => setIsPrivacyOpen(false)} />
         </div>
       )}
 
