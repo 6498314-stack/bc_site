@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Mail, Menu, X, ClipboardList } from 'lucide-react';
+import { Phone, Menu, X, ClipboardList } from 'lucide-react';
 
 interface HeaderProps {
   onNavigate: (section: string) => void;
@@ -32,9 +32,9 @@ export default function Header({
   }, []);
 
   const navItems = [
-    { label: 'О Бизнес-центре', id: 'about' },
-    { label: 'Выбрать офис', id: 'offices' },
-    { label: 'Галерея', id: 'gallery' },
+    { label: 'О бизнес-центре', id: 'about' },
+    { label: 'Помещения', id: 'offices' },
+    { label: 'Фотографии', id: 'gallery' },
     { label: 'Карта и проезд', id: 'map' },
     { label: 'Вопросы', id: 'faq' },
   ];
@@ -58,7 +58,7 @@ export default function Header({
           >
             <img
               src="https://allwebs.ru/images/2026/05/27/dedc6962b9764198dc2fcd5397230818.png"
-              alt="БЦ Красносельский"
+              alt="БЦ Красноярд"
               referrerPolicy="no-referrer"
               className="h-10 md:h-12 w-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
             />
@@ -69,9 +69,9 @@ export default function Header({
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
-                className={`px-3.5 py-2 font-sans text-xs uppercase tracking-[0.18em] font-bold transition cursor-pointer ${
+                className={`px-3.5 py-2 font-sans text-xs uppercase tracking-[0.16em] font-bold transition cursor-pointer ${
                   activeSection === item.id
-                    ? 'text-red-700 border-b-2 border-red-700 rounded-none'
+                    ? 'text-[#1A1A1A] border-b-2 border-red-700 rounded-none'
                     : 'text-stone-700 hover:text-stone-900 hover:bg-stone-200/50 rounded-none'
                 }`}
               >
@@ -88,9 +88,8 @@ export default function Header({
               >
                 +79175219421
               </a>
-              <span className="text-[9px] font-mono text-emerald-750 font-bold flex items-center gap-1 justify-end">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
-                АКТИВЕН
+              <span className="text-[9px] text-stone-500 font-bold uppercase tracking-wider flex items-center gap-1 justify-end">
+                Звонки: 09:00–20:00
               </span>
             </div>
 
@@ -101,7 +100,7 @@ export default function Header({
             >
               <ClipboardList className="w-5 h-5" />
               {bookingsCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-700 text-white font-mono text-[9px] font-bold w-4 h-4 rounded-none flex items-center justify-center animate-bounce">
+                <span className="absolute -top-1 -right-1 bg-red-700 text-white text-[9px] font-bold w-4 h-4 rounded-none flex items-center justify-center">
                   {bookingsCount}
                 </span>
               )}
@@ -109,9 +108,9 @@ export default function Header({
 
             <button
               onClick={onRequestOpen}
-              className="bg-[#1A1A1A] hover:bg-red-800 text-white py-3 px-5 uppercase text-[10px] tracking-[0.2em] font-bold hover:bg-red-800 transition-colors rounded-none cursor-pointer"
+              className="bg-red-700 hover:bg-red-800 text-white py-3 px-5 uppercase text-[10px] tracking-[0.18em] font-bold transition-colors rounded-none cursor-pointer"
             >
-              ПОДАТЬ ЗАЯВКУ
+              ОСТАВИТЬ ЗАЯВКУ
             </button>
           </div>
 
@@ -122,7 +121,7 @@ export default function Header({
             >
               <ClipboardList className="w-5 h-5" />
               {bookingsCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 bg-red-700 text-white font-mono text-[9px] font-bold w-3.5 h-3.5 rounded-none flex items-center justify-center">
+                <span className="absolute -top-0.5 -right-0.5 bg-red-700 text-white text-[9px] font-bold w-3.5 h-3.5 rounded-none flex items-center justify-center">
                   {bookingsCount}
                 </span>
               )}
@@ -150,7 +149,7 @@ export default function Header({
                 }}
                 className={`text-left px-4 py-3 font-sans text-xs uppercase tracking-[0.15em] font-bold transition ${
                   activeSection === item.id
-                    ? 'text-red-700 bg-stone-200/50'
+                    ? 'text-[#1A1A1A] bg-stone-200/50 border-l-2 border-red-700'
                     : 'text-stone-700 hover:text-stone-900 hover:bg-stone-200/30'
                 }`}
               >
@@ -166,21 +165,14 @@ export default function Header({
                 <Phone className="w-4 h-4 text-stone-400" />
                 +79175219421
               </a>
-              <a
-                href="mailto:rent@bc-krasnoselskaya.ru"
-                className="text-stone-600 text-xs flex items-center gap-2"
-              >
-                <Mail className="w-4 h-4 text-stone-400" />
-                rent@bc-krasnoselskaya.ru
-              </a>
               <button
                 onClick={() => {
                   onRequestOpen();
                   setIsOpen(false);
                 }}
-                className="w-full bg-red-700 hover:bg-red-800 text-white text-[10px] uppercase font-bold tracking-[0.2em] py-3.5 rounded-none transition text-center mt-1"
+                className="w-full bg-red-700 hover:bg-red-800 text-white text-[10px] uppercase font-bold tracking-[0.18em] py-3.5 rounded-none transition text-center mt-1"
               >
-                ОСТАВИТЬ ЗАЯВКУ НА АРЕНДУ
+                ОСТАВИТЬ ЗАЯВКУ
               </button>
             </div>
           </div>
