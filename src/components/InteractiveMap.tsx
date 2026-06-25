@@ -6,9 +6,9 @@ export default function InteractiveMap() {
 
   const walkSteps = [
     { text: 'Выход один из станции метро «Красносельская».' },
-    { text: 'Поверните направо и пройдите вдоль улицы Верхняя Красносельская около 200 метров.' },
-    { text: 'Поверните во двор у строений дома 2/1.' },
-    { text: 'Вы на территории БЦ Красноярд на Красносельской.' }
+    { text: 'Пройдите по улице Верхняя Красносельская в сторону дома 2/1.' },
+    { text: 'Общее время пешком от метро до БЦ — около 10 минут.' },
+    { text: 'Поверните во двор у строений дома 2/1. Вы на территории БЦ Красноярд на Красносельской.' }
   ];
 
   const carRoutes = [
@@ -18,7 +18,7 @@ export default function InteractiveMap() {
   ];
 
   const nearbyPlaces = [
-    { name: 'Станция метро «Красносельская»', distance: '7 мин пешком', description: 'Удобная связь с центром и Сокольнической линией.' },
+    { name: 'Станция метро «Красносельская»', distance: '10 мин пешком', description: 'Удобная связь с центром и Сокольнической линией.' },
     { name: 'Кафе-столовая на территории', distance: '1 мин', description: 'Ежедневные обеды и быстрый формат питания для сотрудников.' },
     { name: 'Площадь трех вокзалов', distance: '14 мин пешком', description: 'Ленинградский, Ярославский и Казанский вокзалы рядом.' },
     { name: 'Парковка на территории', distance: '0 мин', description: 'Закрытая охраняемая парковка для арендаторов.' },
@@ -38,7 +38,7 @@ export default function InteractiveMap() {
             Как добраться до БЦ Красноярд
           </h2>
           <p className="text-stone-600 font-sans text-xs md:text-sm leading-relaxed max-w-2xl mx-auto">
-            Бизнес-центр находится на Красносельской, рядом с метро и ключевыми транспортными маршрутами центра Москвы.
+            Бизнес-центр находится на Красносельской, в 10 минутах пешком от метро «Красносельская» и рядом с ключевыми транспортными маршрутами центра Москвы.
           </p>
         </div>
 
@@ -133,7 +133,7 @@ export default function InteractiveMap() {
                 <div className="text-left space-y-0.5">
                   <span className="font-sans font-bold text-stone-900 text-sm block">БЦ Красноярд на Красносельской</span>
                   <span className="text-stone-500 font-sans text-[11px] block">ул. Верхняя Красносельская, д. 2/1</span>
-                  <span className="text-stone-600 text-[9px] font-sans font-bold block uppercase tracking-wider">Парковка и пропускной пункт на территории</span>
+                  <span className="text-stone-600 text-[9px] font-sans font-bold block uppercase tracking-wider">10 минут пешком от метро «Красносельская»</span>
                 </div>
               </div>
 
