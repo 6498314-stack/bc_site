@@ -4,13 +4,14 @@
  */
 
 import React from 'react';
-import { Building2, Phone, Clock, ShieldCheck, MapPin } from 'lucide-react';
+import { Clock, ShieldCheck, MapPin } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (section: string) => void;
+  onPrivacyOpen: () => void;
 }
 
-export default function Footer({ onNavigate }: FooterProps) {
+export default function Footer({ onNavigate, onPrivacyOpen }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -28,7 +29,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 src="https://allwebs.ru/images/2026/05/27/dedc6962b9764198dc2fcd5397230818.png" 
                 alt="БЦ Красноярд" 
                 referrerPolicy="no-referrer"
-                className="h-10 md:h-12 w-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                className="h-14 md:h-16 lg:h-[72px] w-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
               />
             </button>
             
@@ -116,7 +117,9 @@ export default function Footer({ onNavigate }: FooterProps) {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-stone-500 font-sans text-left">
           <p>© {currentYear} БЦ Красноярд на Красносельской. Все права защищены.</p>
           <div className="flex gap-4">
-            <a href="#offices" className="hover:text-stone-400 transition">Политика конфиденциальности</a>
+            <button onClick={onPrivacyOpen} className="hover:text-stone-400 transition cursor-pointer">
+              Политика конфиденциальности
+            </button>
             <a href="#map" className="hover:text-stone-400 transition">Пользовательское соглашение</a>
           </div>
           <p className="font-sans text-[9px] text-stone-600">
