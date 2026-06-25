@@ -54,6 +54,11 @@ export default function Footer({ onNavigate, onPrivacyOpen }: FooterProps) {
                 </button>
               </li>
               <li>
+                <button onClick={() => onNavigate('services')} className="text-stone-400 hover:text-red-500 hover:underline transition cursor-pointer">
+                  УСЛУГИ
+                </button>
+              </li>
+              <li>
                 <button onClick={() => onNavigate('offices')} className="text-stone-400 hover:text-red-500 hover:underline transition cursor-pointer">
                   ПОМЕЩЕНИЯ
                 </button>
