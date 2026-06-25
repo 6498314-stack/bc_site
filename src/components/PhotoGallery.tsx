@@ -7,51 +7,58 @@ interface GalleryImage {
   alt: string;
   title: string;
   description: string;
-  group: 'offices' | 'building';
+  group: 'facade' | 'territory';
 }
 
 const GALLERY_IMAGES: GalleryImage[] = [
   {
-    src: 'https://allwebs.ru/images/2026/05/27/b05d9ef87bd6822bd8e4cd6f9929a306.png',
-    alt: 'Помещение под производство или складской формат',
-    title: 'Помещение под гибкий формат',
-    description: 'Площади можно адаптировать под офис, шоурум, легкое производство или сервисные задачи.',
-    group: 'offices'
+    src: '/images/site/exterior-main-01.webp',
+    alt: 'Фасад БЦ Красноярд со стороны улицы',
+    title: 'Фасад со стороны улицы',
+    description: 'Парадный фасад БЦ Красноярд с аккуратной архитектурой и удобным входом с улицы.',
+    group: 'facade'
   },
   {
-    src: 'https://allwebs.ru/images/2026/05/27/3df3763a4e94d4c9b664eea8798f1335.png',
-    alt: 'Офисные помещения в БЦ Красноярд',
-    title: 'Офисные помещения',
-    description: 'Готовые блоки для команд разного размера: от кабинетов до open-space.',
-    group: 'offices'
+    src: '/images/site/courtyard-02.webp',
+    alt: 'Входная группа и внутренний двор БЦ Красноярд',
+    title: 'Входная группа корпуса',
+    description: 'Внутренний двор и удобный доступ к корпусам бизнес-центра.',
+    group: 'facade'
   },
   {
-    src: 'https://allwebs.ru/images/2026/05/27/cc04f40ef6d42683ab126f6d075cde6c.png',
+    src: '/images/site/building-side-01.webp',
+    alt: 'Боковой фасад здания БЦ Красноярд',
+    title: 'Боковой фасад здания',
+    description: 'Масштаб здания, чистая территория и аккуратное техническое состояние фасадов.',
+    group: 'facade'
+  },
+  {
+    src: '/images/site/courtyard-01.webp',
     alt: 'Внутренний двор БЦ Красноярд',
     title: 'Внутренний двор',
-    description: 'Закрытая территория бизнес-центра с удобной навигацией и спокойной деловой атмосферой.',
-    group: 'building'
+    description: 'Закрытая территория с понятной навигацией и удобным подъездом к корпусам.',
+    group: 'territory'
   },
   {
-    src: 'https://allwebs.ru/images/2026/05/27/fdc5c91993831af84958fc9b59fb10.png',
-    alt: 'Внутренний двор и проходы БЦ Красноярд',
-    title: 'Территория бизнес-центра',
-    description: 'Аккуратные проходы, чистая территория и понятный доступ к корпусам.',
-    group: 'building'
+    src: '/images/site/courtyard-wide-01.webp',
+    alt: 'Двор и подъезд к корпусам БЦ Красноярд',
+    title: 'Двор и подъезд к корпусам',
+    description: 'Открытое дворовое пространство с возможностью комфортного доступа к зданиям.',
+    group: 'territory'
   },
   {
-    src: 'https://allwebs.ru/images/2026/05/27/8fcc38593aea4df2e1aceea4e7b3bb1d.png',
-    alt: 'Территория БЦ Красноярд',
-    title: 'Обслуживание территории',
-    description: 'Собственная эксплуатация, регулярная уборка и поддержание порядка на объекте.',
-    group: 'building'
+    src: '/images/site/passage-01.webp',
+    alt: 'Проезд внутри территории БЦ Красноярд',
+    title: 'Проезд внутри территории',
+    description: 'Внутренние проезды и подъездные маршруты внутри территории бизнес-центра.',
+    group: 'territory'
   },
   {
-    src: 'https://allwebs.ru/images/2026/05/27/9787547e584cfba775c497fa7b89a40c.png',
-    alt: 'Фасад здания БЦ Красноярд',
-    title: 'Фасад здания',
-    description: 'Историческая кирпичная архитектура и благоустроенный двор в районе Красносельской.',
-    group: 'building'
+    src: '/images/site/passage-02.webp',
+    alt: 'Территория и корпуса БЦ Красноярд',
+    title: 'Внутренняя территория БЦ',
+    description: 'Корпуса, проходы и территория комплекса в едином визуальном стиле.',
+    group: 'territory'
   }
 ];
 
@@ -129,14 +136,14 @@ export default function PhotoGallery() {
             Фотографии бизнес-центра Красноярд на Красносельской
           </h2>
           <p className="font-sans text-stone-600 text-sm md:text-base leading-relaxed">
-            Отдельно показываем офисные помещения, внешнюю инфраструктуру и дополнительные фотографии внутри БЦ.
+            Показываем фасад, территорию бизнес-центра и дополнительную подборку фотографий внутренних помещений.
           </p>
         </div>
 
         <div className="space-y-14">
-          {renderGroup('Офисы и помещения', 'Готовые площади для размещения команды, переговорных зон, шоурума или сервисного блока.', 'offices')}
+          {renderGroup('Фасад и архитектура', 'Основные ракурсы фасада, входной группы и общего архитектурного облика БЦ.', 'facade')}
           <InteriorMoreGallery />
-          {renderGroup('Здание и территория', 'Фасад, двор и общая инфраструктура бизнес-центра на Красносельской.', 'building')}
+          {renderGroup('Двор и территория', 'Внутренний двор, проезды и общая территория бизнес-центра на Красносельской.', 'territory')}
         </div>
 
         {activeImageIndex !== null && (
