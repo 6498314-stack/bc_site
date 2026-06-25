@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Maximize2, X, ChevronLeft, ChevronRight, Image as ImageIcon } from 'lucide-react';
+import InteriorMoreGallery from './InteriorMoreGallery';
 
 interface GalleryImage {
   src: string;
@@ -128,12 +129,13 @@ export default function PhotoGallery() {
             Фотографии бизнес-центра Красноярд на Красносельской
           </h2>
           <p className="font-sans text-stone-600 text-sm md:text-base leading-relaxed">
-            Отдельно показываем офисные помещения и внешнюю инфраструктуру, чтобы фотографии и подписи читались синхронно и без наложений.
+            Отдельно показываем офисные помещения, внешнюю инфраструктуру и дополнительные фотографии внутри БЦ.
           </p>
         </div>
 
         <div className="space-y-14">
           {renderGroup('Офисы и помещения', 'Готовые площади для размещения команды, переговорных зон, шоурума или сервисного блока.', 'offices')}
+          <InteriorMoreGallery />
           {renderGroup('Здание и территория', 'Фасад, двор и общая инфраструктура бизнес-центра на Красносельской.', 'building')}
         </div>
 
