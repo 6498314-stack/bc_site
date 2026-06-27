@@ -25,7 +25,7 @@ export default function InteractiveMap() {
     { name: 'ТЦ «Тройка» и магазины', distance: '10 мин пешком', description: 'Бытовая инфраструктура рядом с бизнес-центром.' },
   ];
 
-  const yandexMapUrl = 'https://yandex.ru/map-widget/v1/?ll=37.663100%2C55.779300&z=17&mode=search&text=Москва%2C%20улица%20Верхняя%20Красносельская%2C%20д.%202%2F1';
+  const yandexMapUrl = 'https://yandex.ru/map-widget/v1/?ll=37.663100%2C55.779300&z=17';
 
   return (
     <section id="map" className="py-20 md:py-28 bg-[#F4F1EE] border-t border-b border-[#1A1A1A]/10 scroll-mt-20">
