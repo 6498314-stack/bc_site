@@ -33,7 +33,7 @@ export default function Footer({ onNavigate, onPrivacyOpen }: FooterProps) {
                   src="https://allwebs.ru/images/2026/05/27/dedc6962b9764198dc2fcd5397230818.png" 
                   alt="БЦ Красноярд" 
                   referrerPolicy="no-referrer"
-                  className="h-14 md:h-16 lg:h-[72px] w-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                  className="h-20 md:h-24 lg:h-28 w-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
                 />
               </button>
               
