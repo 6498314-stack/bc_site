@@ -21,7 +21,7 @@ export default function Hero({ onRentClick, onExploreClick }: HeroProps) {
   ];
 
   return (
-    <section id="hero" className="relative pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden bg-[#F4F1EE]">
+    <section id="hero" className="relative pt-36 md:pt-44 pb-16 md:pb-24 overflow-hidden bg-[#F4F1EE]">
       <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#1A1A1A_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
