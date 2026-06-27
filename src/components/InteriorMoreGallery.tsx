@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Building2, Maximize2, Plus, X } from 'lucide-react';
+import { Building2, Maximize2, Plus, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const photos = [
   { src: '/images/interiors/interior-extra-01.webp', title: 'Кабинет с рабочей зоной', description: 'Готовый кабинет с рабочим столом, диваном и базовой мебелью.' },
@@ -17,6 +17,24 @@ const photos = [
 export default function InteriorMoreGallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState<number | null>(null);
+
+  const openGallery = () => setIsOpen(true);
+
+  const handlePrev = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    setActive((current) => {
+      if (current === null) return current;
+      return current === 0 ? photos.length - 1 : current - 1;
+    });
+  };
+
+  const handleNext = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    setActive((current) => {
+      if (current === null) return current;
+      return current === photos.length - 1 ? 0 : current + 1;
+    });
+  };
 
   return (
     <div className="bg-white border border-[#1A1A1A]/10 rounded-none p-6 md:p-8 space-y-6">
@@ -42,19 +60,24 @@ export default function InteriorMoreGallery() {
       </div>
 
       {!isOpen && (
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 pt-2">
+        <button
+          onClick={openGallery}
+          className="grid grid-cols-2 md:grid-cols-5 gap-3 pt-2 w-full text-left cursor-pointer group"
+          aria-label="Показать дополнительные фотографии внутри БЦ"
+        >
           {photos.slice(0, 5).map((photo, index) => (
-            <div key={photo.src} className="relative h-28 md:h-36 overflow-hidden border border-[#1A1A1A]/10 bg-[#F4F1EE]">
-              <img src={photo.src} alt={photo.title} loading="lazy" className="w-full h-full object-cover grayscale-[20%]" />
+            <span key={photo.src} className="relative h-28 md:h-36 overflow-hidden border border-[#1A1A1A]/10 bg-[#F4F1EE] block">
+              <img src={photo.src} alt={photo.title} loading="lazy" className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition duration-300" />
               {index === 4 && (
-                <div className="absolute inset-0 bg-[#1A1A1A]/65 text-white flex flex-col items-center justify-center text-center px-3">
+                <span className="absolute inset-0 bg-[#1A1A1A]/65 group-hover:bg-[#1A1A1A]/75 text-white flex flex-col items-center justify-center text-center px-3 transition duration-300">
                   <Building2 className="w-5 h-5 mb-2" />
                   <span className="font-sans text-[10px] uppercase tracking-[0.16em] font-bold">ещё 10 фото</span>
-                </div>
+                  <span className="font-sans text-[9px] uppercase tracking-[0.14em] text-white/75 mt-1">открыть подборку</span>
+                </span>
               )}
-            </div>
+            </span>
           ))}
-        </div>
+        </button>
       )}
 
       {isOpen && (
@@ -83,14 +106,35 @@ export default function InteriorMoreGallery() {
 
       {active !== null && (
         <div onClick={() => setActive(null)} className="fixed inset-0 bg-[#0F0F0E]/95 backdrop-blur-md z-[110] flex flex-col items-center justify-center p-4">
-          <button onClick={() => setActive(null)} className="absolute top-5 right-5 p-2.5 text-stone-400 hover:text-white bg-stone-900/60 border border-white/10 cursor-pointer">
+          <button onClick={() => setActive(null)} className="absolute top-5 right-5 p-2.5 text-stone-400 hover:text-white bg-stone-900/60 border border-white/10 cursor-pointer z-30">
             <X className="w-5 h-5" />
           </button>
-          <div className="absolute top-5 left-5 right-16 text-left">
+          <div className="absolute top-5 left-5 right-16 text-left z-20">
             <h4 className="font-sans font-bold text-white text-base md:text-lg">{photos[active].title}</h4>
             <p className="font-sans text-xs text-stone-400 mt-1">{photos[active].description}</p>
           </div>
+
+          <button
+            onClick={handlePrev}
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 p-3 bg-stone-900/70 hover:bg-stone-800 text-stone-300 hover:text-white transition border border-white/10 z-20 cursor-pointer"
+            aria-label="Предыдущее фото"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
           <img src={photos[active].src} alt={photos[active].title} onClick={(e) => e.stopPropagation()} className="max-w-full max-h-[78vh] object-contain border border-white/10 shadow-2xl" />
+
+          <button
+            onClick={handleNext}
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 p-3 bg-stone-900/70 hover:bg-stone-800 text-stone-300 hover:text-white transition border border-white/10 z-20 cursor-pointer"
+            aria-label="Следующее фото"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          <div className="absolute bottom-6 font-sans text-xs text-stone-500 tracking-widest">
+            {active + 1} / {photos.length}
+          </div>
         </div>
       )}
     </div>
