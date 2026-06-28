@@ -43,7 +43,7 @@ export default function ApplicationForm({
 
     let hasError = false;
     if (!phone || phone.length < 7) {
-      setPhoneError('Пожалуйста, укажите корректное значение контакного номера');
+      setPhoneError('Пожалуйста, укажите корректный контактный номер');
       hasError = true;
     }
     if (!contactName) {
@@ -116,10 +116,10 @@ export default function ApplicationForm({
       <div className="bg-[#1A1A1A] text-stone-100 px-6 py-5 flex items-center justify-between">
         <div className="text-left">
           <h3 className="font-serif italic font-bold text-base md:text-lg text-white">
-            {selectedOffice ? `Заявка на Офис №${selectedOffice.number}` : 'Онлайн-заявка на аренду'}
+            {selectedOffice ? `Записаться на просмотр офиса №${selectedOffice.number}` : 'Получить подбор помещений'}
           </h3>
           <p className="text-stone-400 font-sans text-[10px] uppercase tracking-wider mt-0.5">
-            {selectedOffice ? 'Бронирование конкретного объекта без комиссии' : 'Связь с отделом аренды в течение 10 минут'}
+            {selectedOffice ? 'Менеджер согласует удобное время просмотра' : 'Свяжемся, уточним площадь и предложим варианты'}
           </p>
         </div>
         <button
@@ -133,6 +133,11 @@ export default function ApplicationForm({
       <div className="p-6 md:p-8">
         {step === 1 ? (
           <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5 text-left">
+            <div className="bg-[#F4F1EE] border border-[#1A1A1A]/10 px-4 py-3 rounded-none">
+              <p className="font-sans text-[11px] text-stone-600 leading-relaxed">
+                После заявки менеджер свяжется, уточнит требования, предложит свободные помещения и договорится о просмотре.
+              </p>
+            </div>
             
             {/* Prefilled selected office statistics */}
             {selectedOffice && (
@@ -251,7 +256,7 @@ export default function ApplicationForm({
             <div className="bg-[#F4F1EE] px-4 py-3 rounded-none border border-[#1A1A1A]/10 flex items-start gap-2">
               <input type="checkbox" id="agree" required defaultChecked className="mt-1 cursor-pointer" />
               <label htmlFor="agree" className="text-[10px] text-stone-550 leading-normal cursor-pointer select-none text-left">
-                Нажимая кнопку «Отправить», я даю согласие на обработку моих персональных данных и соглашаюсь с коммерческой офертой арендодателя.
+                Нажимая кнопку, я соглашаюсь с обработкой персональных данных, Политикой конфиденциальности и Пользовательским соглашением.
               </label>
             </div>
 
@@ -264,7 +269,7 @@ export default function ApplicationForm({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#1A1A1A] hover:bg-red-800 text-white font-sans text-xs uppercase tracking-[0.25em] font-bold py-4 rounded-none transition flex items-center justify-center gap-2 cursor-pointer shadow-none disabled:bg-stone-400"
+              className="w-full bg-red-700 hover:bg-red-800 text-white font-sans text-xs uppercase tracking-[0.2em] font-bold py-4 rounded-none transition flex items-center justify-center gap-2 cursor-pointer shadow-none disabled:bg-stone-400"
             >
               {isSubmitting ? (
                 <>
@@ -272,7 +277,7 @@ export default function ApplicationForm({
                   Отправка...
                 </>
               ) : (
-                'ОТПРАВИТЬ ОНЛАЙН-ЗАЯВКУ'
+                selectedOffice ? 'ЗАПИСАТЬСЯ НА ПРОСМОТР' : 'ПОЛУЧИТЬ ПОДБОР ПОМЕЩЕНИЙ'
               )}
             </button>
           </form>
@@ -298,7 +303,7 @@ export default function ApplicationForm({
             </div>
 
             <p className="text-stone-600 text-xs leading-relaxed max-w-sm mx-auto">
-              Менеджер отдела аренды БЦ получит заявку и перезвонит вам по номеру <strong className="text-stone-900 font-bold">{phone}</strong>.
+              Менеджер отдела аренды БЦ получит заявку, подберёт подходящие помещения и перезвонит вам по номеру <strong className="text-stone-900 font-bold">{phone}</strong>.
             </p>
 
             <div className="border-t border-stone-100 pt-5 flex justify-center gap-3">
