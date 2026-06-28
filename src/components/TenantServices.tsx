@@ -1,5 +1,5 @@
 import React from 'react';
-import { DraftingCompass, MoveRight, Printer, KeyRound, Scale, Store, Box, Wrench } from 'lucide-react';
+import { DraftingCompass, MoveRight, Printer, KeyRound, Scale, Store, Box, Wrench, ClipboardList, PhoneCall, Building2, FileCheck } from 'lucide-react';
 
 const officeServices = [
   {
@@ -28,6 +28,29 @@ const businessServices = [
   'подготовка и изготовление договоров',
   'торговая зона с магазином «Магнит»',
   'другие повседневные сервисы для бизнеса',
+];
+
+const rentalSteps = [
+  {
+    icon: <ClipboardList className="w-5 h-5 text-red-700" />,
+    title: 'Оставляете заявку',
+    description: 'Указываете желаемую площадь, контактный телефон и основные требования к офису.',
+  },
+  {
+    icon: <PhoneCall className="w-5 h-5 text-red-700" />,
+    title: 'Уточняем задачу',
+    description: 'Менеджер связывается с вами, уточняет формат команды, сроки въезда и пожелания.',
+  },
+  {
+    icon: <Building2 className="w-5 h-5 text-red-700" />,
+    title: 'Показываем варианты',
+    description: 'Подбираем подходящие помещения и договариваемся о просмотре на территории БЦ.',
+  },
+  {
+    icon: <FileCheck className="w-5 h-5 text-red-700" />,
+    title: 'Согласуем условия',
+    description: 'Фиксируем площадь, ставку, сроки, каникулы и переходим к договору аренды.',
+  },
 ];
 
 export default function TenantServices() {
@@ -104,6 +127,46 @@ export default function TenantServices() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="mt-14 md:mt-18 bg-white border border-[#1A1A1A]/10 rounded-none p-6 md:p-8 text-left">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-8">
+            <div className="max-w-2xl">
+              <span className="text-[10px] text-red-700 font-sans uppercase tracking-[0.22em] font-bold block mb-2">
+                Порядок работы
+              </span>
+              <h3 className="font-serif text-3xl md:text-4xl text-stone-900 font-bold leading-tight">
+                Как проходит аренда
+              </h3>
+              <p className="font-sans text-stone-600 text-xs md:text-sm leading-relaxed mt-3">
+                Простой сценарий без лишних шагов: от заявки до просмотра помещения и согласования условий договора.
+              </p>
+            </div>
+            <div className="bg-[#F4F1EE] border border-[#1A1A1A]/10 px-4 py-3 max-w-sm">
+              <p className="font-sans text-[11px] text-stone-600 leading-relaxed">
+                После заявки менеджер свяжется, уточнит площадь, предложит свободные помещения и договорится о просмотре.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {rentalSteps.map((step, index) => (
+              <div key={step.title} className="relative bg-[#F8F6F2] border border-[#1A1A1A]/10 p-5 rounded-none min-h-[190px]">
+                <span className="absolute top-4 right-4 font-sans text-[10px] font-bold text-stone-400 uppercase tracking-[0.18em]">
+                  0{index + 1}
+                </span>
+                <div className="p-3 bg-white border border-[#1A1A1A]/10 w-fit mb-5">
+                  {step.icon}
+                </div>
+                <h4 className="font-sans font-bold text-stone-900 text-base leading-snug mb-2">
+                  {step.title}
+                </h4>
+                <p className="font-sans text-xs text-stone-600 leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
