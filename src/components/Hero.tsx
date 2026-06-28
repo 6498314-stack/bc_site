@@ -64,14 +64,14 @@ export default function Hero({ onRentClick, onExploreClick }: HeroProps) {
                 onClick={onRentClick}
                 className="bg-red-700 hover:bg-red-800 text-white font-sans text-xs uppercase tracking-[0.2em] font-bold px-7 py-4 rounded-none transition flex items-center gap-2 cursor-pointer"
               >
-                ОСТАВИТЬ ЗАЯВКУ
+                ПОЛУЧИТЬ ПОДБОР
                 <ArrowUpRight className="w-4 h-4" />
               </button>
               <button
                 onClick={onExploreClick}
                 className="bg-transparent hover:bg-white border border-[#1A1A1A] text-[#1A1A1A] font-sans text-xs uppercase tracking-[0.2em] font-bold px-7 py-4 rounded-none transition flex items-center gap-2.5 group cursor-pointer"
               >
-                ВЫБРАТЬ ПОМЕЩЕНИЕ
+                СМОТРЕТЬ ПОМЕЩЕНИЯ
                 <Compass className="w-4 h-4 group-hover:rotate-45 transition-transform" />
               </button>
             </div>
