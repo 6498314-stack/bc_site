@@ -16,7 +16,7 @@ export default function Hero({ onRentClick, onExploreClick }: HeroProps) {
   const stats = [
     { value: 'B+', label: 'Класс здания' },
     { value: '30–1500 м²', label: 'Площади офисов' },
-    { value: 'от 18 500 ₽', label: 'Ставка за м²/год' },
+    { value: '1 250 ₽', label: 'за м² / месяц' },
     { value: '10 мин', label: 'Пешком от метро' },
   ];
 
