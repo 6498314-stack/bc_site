@@ -8,7 +8,7 @@ export interface OfficeSpace {
   number: string;
   floor: number;
   area: number; // in square meters
-  pricePerSqmYear: number; // price per sqm per year in rubles
+  pricePerSqmMonth: number; // price per sqm per month in rubles
   status: 'free' | 'booked' | 'occupied';
   type: 'Cabinet' | 'OpenSpace' | 'MeetingRoom' | 'EntireFloor';
   windows: 'courtyard' | 'street' | 'panoramic';
