@@ -148,9 +148,9 @@ export default function ApplicationForm({
                 </div>
                 <div className="text-right">
                   <span className="text-red-700 font-serif italic text-sm font-bold block">
-                    {Math.round((selectedOffice.area * selectedOffice.pricePerSqmYear) / 12).toLocaleString('ru')} ₽ / мес
+                    {(selectedOffice.area * selectedOffice.pricePerSqmMonth).toLocaleString('ru')} ₽ / мес
                   </span>
-                  <span className="text-[10px] font-sans text-stone-400 block mt-0.5">Вкл. эксплуатацию</span>
+                  <span className="text-[10px] font-sans text-stone-400 block mt-0.5">1 250 ₽ за м²/мес</span>
                 </div>
               </div>
             )}
