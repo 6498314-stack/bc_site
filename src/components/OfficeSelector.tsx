@@ -11,13 +11,15 @@ interface OfficeSelectorProps {
   onOfficeSelect: (office: OfficeSpace) => void;
 }
 
+const RENT_RATE_PER_SQM_MONTH = 1250;
+
 const mockOffices: OfficeSpace[] = [
   {
     id: 'o_101',
     number: '101',
     floor: 1,
     area: 54,
-    pricePerSqmYear: 18500,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
     type: 'Cabinet',
     windows: 'courtyard',
@@ -29,7 +31,7 @@ const mockOffices: OfficeSpace[] = [
     number: '102',
     floor: 1,
     area: 120,
-    pricePerSqmYear: 19000,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'occupied',
     type: 'OpenSpace',
     windows: 'street',
@@ -41,7 +43,7 @@ const mockOffices: OfficeSpace[] = [
     number: '103',
     floor: 1,
     area: 35,
-    pricePerSqmYear: 18000,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
     type: 'Cabinet',
     windows: 'courtyard',
@@ -53,7 +55,7 @@ const mockOffices: OfficeSpace[] = [
     number: '104',
     floor: 1,
     area: 180,
-    pricePerSqmYear: 21000,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'booked',
     type: 'OpenSpace',
     windows: 'panoramic',
@@ -65,7 +67,7 @@ const mockOffices: OfficeSpace[] = [
     number: '201',
     floor: 2,
     area: 42,
-    pricePerSqmYear: 19500,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
     type: 'Cabinet',
     windows: 'street',
@@ -77,7 +79,7 @@ const mockOffices: OfficeSpace[] = [
     number: '202',
     floor: 2,
     area: 75,
-    pricePerSqmYear: 19000,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
     type: 'Cabinet',
     windows: 'courtyard',
@@ -89,7 +91,7 @@ const mockOffices: OfficeSpace[] = [
     number: '203',
     floor: 2,
     area: 310,
-    pricePerSqmYear: 20500,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
     type: 'OpenSpace',
     windows: 'panoramic',
@@ -101,7 +103,7 @@ const mockOffices: OfficeSpace[] = [
     number: '204',
     floor: 2,
     area: 65,
-    pricePerSqmYear: 18500,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'occupied',
     type: 'MeetingRoom',
     windows: 'courtyard',
@@ -113,7 +115,7 @@ const mockOffices: OfficeSpace[] = [
     number: '301',
     floor: 3,
     area: 88,
-    pricePerSqmYear: 19500,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
     type: 'OpenSpace',
     windows: 'courtyard',
@@ -125,7 +127,7 @@ const mockOffices: OfficeSpace[] = [
     number: '302',
     floor: 3,
     area: 145,
-    pricePerSqmYear: 20000,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
     type: 'OpenSpace',
     windows: 'street',
@@ -137,7 +139,7 @@ const mockOffices: OfficeSpace[] = [
     number: '303',
     floor: 3,
     area: 56,
-    pricePerSqmYear: 19500,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'booked',
     type: 'Cabinet',
     windows: 'street',
@@ -149,7 +151,7 @@ const mockOffices: OfficeSpace[] = [
     number: '304',
     floor: 3,
     area: 450,
-    pricePerSqmYear: 22000,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'occupied',
     type: 'EntireFloor',
     windows: 'panoramic',
@@ -161,7 +163,7 @@ const mockOffices: OfficeSpace[] = [
     number: '402',
     floor: 4,
     area: 240,
-    pricePerSqmYear: 22500,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
     type: 'OpenSpace',
     windows: 'panoramic',
@@ -173,7 +175,7 @@ const mockOffices: OfficeSpace[] = [
     number: '403',
     floor: 4,
     area: 112,
-    pricePerSqmYear: 20000,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
     type: 'OpenSpace',
     windows: 'courtyard',
@@ -185,7 +187,7 @@ const mockOffices: OfficeSpace[] = [
     number: '404',
     floor: 4,
     area: 95,
-    pricePerSqmYear: 19000,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
     type: 'MeetingRoom',
     windows: 'courtyard',
@@ -208,7 +210,8 @@ export default function OfficeSelector({ onOfficeSelect }: OfficeSelectorProps) 
     setActiveOffice(firstFreeOnFloor || mockOffices.find(o => o.floor === floor) || null);
   };
 
-  const calculateMonthlyPrice = (office: OfficeSpace) => Math.round((office.area * office.pricePerSqmYear) / 12);
+  const calculateMonthlyPrice = (office: OfficeSpace) => office.area * office.pricePerSqmMonth;
+  const calculateAnnualPrice = (office: OfficeSpace) => calculateMonthlyPrice(office) * 12;
 
   const getStatusText = (status: 'free' | 'booked' | 'occupied') => {
     switch (status) {
@@ -269,7 +272,7 @@ export default function OfficeSelector({ onOfficeSelect }: OfficeSelectorProps) 
               Интерактивный выбор помещений
             </h2>
             <p className="text-stone-600 font-sans text-xs md:text-sm max-w-2xl leading-relaxed">
-              Выберите этаж и помещение на схеме, чтобы посмотреть параметры и оставить заявку менеджеру отдела аренды.
+              Выберите этаж и помещение на схеме, чтобы посмотреть площадь, ставку 1 250 ₽ за м² в месяц и отправить заявку менеджеру отдела аренды.
             </p>
           </div>
           
@@ -300,12 +303,13 @@ export default function OfficeSelector({ onOfficeSelect }: OfficeSelectorProps) 
             <span className="text-stone-900 font-sans font-extrabold text-xl sm:text-2xl mt-1 block">{totalFreeArea} м²</span>
           </div>
           <div className="bg-[#F4F1EE] border border-[#1A1A1A]/10 p-4 rounded-none">
-            <span className="text-stone-550 text-[10px] block font-bold uppercase tracking-wider font-sans">Высота потолков</span>
-            <span className="text-stone-900 font-sans font-extrabold text-xl sm:text-2xl mt-1 block">{selectedFloor === 4 ? '3.8 м' : '3.6 м'}</span>
+            <span className="text-stone-550 text-[10px] block font-bold uppercase tracking-wider font-sans">Ставка аренды</span>
+            <span className="text-stone-900 font-sans font-extrabold text-xl sm:text-2xl mt-1 block">1 250 ₽</span>
+            <span className="text-stone-500 font-sans text-[10px] block uppercase tracking-wider mt-0.5">за м² / месяц</span>
           </div>
           <div className="bg-[#F4F1EE] border border-[#1A1A1A]/10 p-4 rounded-none">
-            <span className="text-stone-550 text-[10px] block font-bold uppercase tracking-wider font-sans">Тип планировок</span>
-            <span className="text-stone-800 font-sans text-xs sm:text-sm mt-2 block font-bold truncate">Open-space и кабинеты</span>
+            <span className="text-stone-550 text-[10px] block font-bold uppercase tracking-wider font-sans">Высота потолков</span>
+            <span className="text-stone-900 font-sans font-extrabold text-xl sm:text-2xl mt-1 block">{selectedFloor === 4 ? '3.8 м' : '3.6 м'}</span>
           </div>
         </div>
 
@@ -339,7 +343,7 @@ export default function OfficeSelector({ onOfficeSelect }: OfficeSelectorProps) 
 
             <div className="flex items-center gap-2 bg-white rounded-none px-4 py-3 text-xs text-stone-700 font-medium border border-[#1A1A1A]/10">
               <Info className="w-4 h-4 text-stone-500 shrink-0" />
-              <span>Кликните на помещение на схеме, чтобы посмотреть параметры справа</span>
+              <span>Кликните на помещение на схеме, чтобы посмотреть параметры и расчёт справа</span>
             </div>
           </div>
 
@@ -387,17 +391,23 @@ export default function OfficeSelector({ onOfficeSelect }: OfficeSelectorProps) 
 
                 <div className="bg-white border border-red-700/15 p-4 rounded-none text-left">
                   <div className="flex justify-between items-baseline mb-1 gap-4">
-                    <span className="text-stone-600 text-[10px] uppercase tracking-wider font-sans font-bold">Ставка за м² в год:</span>
-                    <span className="text-stone-900 text-xs font-bold">{activeOffice.pricePerSqmYear.toLocaleString('ru')} ₽</span>
+                    <span className="text-stone-600 text-[10px] uppercase tracking-wider font-sans font-bold">Ставка за м² в месяц:</span>
+                    <span className="text-stone-900 text-xs font-bold">{activeOffice.pricePerSqmMonth.toLocaleString('ru')} ₽</span>
                   </div>
                   <div className="flex justify-between items-baseline border-t border-[#1A1A1A]/10 pt-2.5 mt-2.5 gap-4">
-                    <span className="text-stone-650 text-xs font-sans uppercase tracking-wider font-bold">Итого за месяц:</span>
+                    <span className="text-stone-650 text-xs font-sans uppercase tracking-wider font-bold">Расчёт за месяц:</span>
                     <span className="text-[#1A1A1A] font-sans font-extrabold text-xl md:text-2xl">
                       {calculateMonthlyPrice(activeOffice).toLocaleString('ru')} ₽ <span className="text-[10px] font-sans font-medium text-stone-500 lowercase">/ мес</span>
                     </span>
                   </div>
+                  <div className="flex justify-between items-baseline border-t border-[#1A1A1A]/10 pt-2.5 mt-2.5 gap-4">
+                    <span className="text-stone-500 text-[10px] font-sans uppercase tracking-wider font-bold">Ориентир за год:</span>
+                    <span className="text-stone-700 font-sans font-bold text-sm">
+                      {calculateAnnualPrice(activeOffice).toLocaleString('ru')} ₽
+                    </span>
+                  </div>
                   <span className="text-[9px] text-stone-400 block mt-2 text-right">
-                    * Прямая аренда, без комиссии брокерам.
+                    * Расчёт: площадь × 1 250 ₽/м²/мес. Прямая аренда, без комиссии брокерам.
                   </span>
                 </div>
 
@@ -427,7 +437,7 @@ export default function OfficeSelector({ onOfficeSelect }: OfficeSelectorProps) 
                     onClick={() => onOfficeSelect(activeOffice)}
                     className="w-full bg-red-700 hover:bg-red-800 text-white font-sans text-xs uppercase tracking-[0.22em] font-bold py-4 rounded-none transition flex items-center justify-center gap-1.5 cursor-pointer shadow-none mt-auto"
                   >
-                    Оставить заявку
+                    Записаться на просмотр
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 ) : (
