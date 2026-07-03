@@ -24,7 +24,7 @@ export default function ApplicationForm({
   const [companyName, setCompanyName] = useState('');
   const [contactName, setContactName] = useState('');
   const [phone, setPhone] = useState('');
-  const [areaRange, setAreaRange] = useState(selectedOffice ? `${selectedOffice.area} м²` : '30-100 м²');
+  const [areaRange, setAreaRange] = useState(selectedOffice ? `${selectedOffice.area} м²` : '15-25 м²');
   const [rentDate, setRentDate] = useState('');
   const [comments, setComments] = useState('');
 
@@ -222,7 +222,12 @@ export default function ApplicationForm({
                   onChange={(e) => setAreaRange(e.target.value)}
                   className="w-full bg-[#F4F1EE]/65 border border-[#1A1A1A]/10 rounded-none py-2.5 px-3.5 text-xs font-sans focus:outline-none focus:border-stone-900 focus:bg-white transition cursor-pointer"
                 >
-                  <option value="30-100 м²">От 30 до 100 м²</option>
+                  <option value="15 м²">15 м²</option>
+                  <option value="20 м²">20 м²</option>
+                  <option value="25 м²">25 м²</option>
+                  <option value="15-25 м²">От 15 до 25 м²</option>
+                  <option value="25-50 м²">От 25 до 50 м²</option>
+                  <option value="50-100 м²">От 50 до 100 м²</option>
                   <option value="100-300 м²">От 100 до 300 м²</option>
                   <option value="300-600 м²">От 300 до 600 м²</option>
                   <option value="600-1500 м²">От 600 до 1500 м²</option>
