@@ -11,6 +11,14 @@ interface OfficeSelectorProps {
   onOfficeSelect: (office: OfficeSpace) => void;
 }
 
+type LayoutShape = {
+  number: string;
+  d: string;
+  labelX: number;
+  labelY: number;
+  metaY: number;
+};
+
 const RENT_RATE_PER_SQM_MONTH = 1250;
 
 const mockOffices: OfficeSpace[] = [
@@ -18,17 +26,53 @@ const mockOffices: OfficeSpace[] = [
     id: 'o_101',
     number: '101',
     floor: 1,
-    area: 54,
+    area: 15,
     pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
     type: 'Cabinet',
     windows: 'courtyard',
-    description: 'Светлый кабинетный офис для небольшой команды на 6–8 рабочих мест. Подойдет для агентства, IT-команды или проектного офиса.',
-    features: ['Приточно-вытяжная вентиляция', 'Оптоволоконный интернет', 'Готовая отделка', 'Кондиционирование'],
+    description: 'Компактный кабинет для 1–2 рабочих мест, индивидуального специалиста или небольшого отдела.',
+    features: ['Готовая отделка', 'Оптоволоконный интернет', 'Тихая зона', 'Быстрый въезд'],
   },
   {
     id: 'o_102',
     number: '102',
+    floor: 1,
+    area: 20,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
+    status: 'free',
+    type: 'Cabinet',
+    windows: 'courtyard',
+    description: 'Небольшой кабинет для 2–3 сотрудников с возможностью организовать рабочее место руководителя.',
+    features: ['Готовое освещение', 'Интернет', 'Кондиционирование'],
+  },
+  {
+    id: 'o_103',
+    number: '103',
+    floor: 1,
+    area: 25,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
+    status: 'free',
+    type: 'Cabinet',
+    windows: 'street',
+    description: 'Кабинет на 3–4 рабочих места. Подойдет для продаж, консультационного офиса или проектной команды.',
+    features: ['Вентиляция', 'Готовая отделка', 'Видеодомофон'],
+  },
+  {
+    id: 'o_104',
+    number: '104',
+    floor: 1,
+    area: 54,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
+    status: 'free',
+    type: 'Cabinet',
+    windows: 'street',
+    description: 'Светлый кабинетный офис для небольшой команды на 6–8 рабочих мест.',
+    features: ['Приточно-вытяжная вентиляция', 'Оптоволоконный интернет', 'Готовая отделка', 'Кондиционирование'],
+  },
+  {
+    id: 'o_105',
+    number: '105',
     floor: 1,
     area: 120,
     pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
@@ -39,20 +83,8 @@ const mockOffices: OfficeSpace[] = [
     features: ['СКУД', 'Зонирование'],
   },
   {
-    id: 'o_103',
-    number: '103',
-    floor: 1,
-    area: 35,
-    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
-    status: 'free',
-    type: 'Cabinet',
-    windows: 'courtyard',
-    description: 'Компактное помещение для 4–5 рабочих мест рядом с тихой внутренней зоной.',
-    features: ['Вентиляция', 'Готовое освещение', 'Видеодомофон'],
-  },
-  {
-    id: 'o_104',
-    number: '104',
+    id: 'o_106',
+    number: '106',
     floor: 1,
     area: 180,
     pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
@@ -66,43 +98,43 @@ const mockOffices: OfficeSpace[] = [
     id: 'o_201',
     number: '201',
     floor: 2,
-    area: 42,
+    area: 18,
     pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
     type: 'Cabinet',
     windows: 'street',
-    description: 'Угловой кабинет на 5–7 человек с хорошим естественным освещением.',
+    description: 'Компактный кабинет на 1–2 человека с хорошим естественным освещением.',
     features: ['Регулировка отопления', 'Оптоволокно', 'Сигнализация'],
   },
   {
     id: 'o_202',
     number: '202',
     floor: 2,
-    area: 75,
+    area: 22,
     pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
     type: 'Cabinet',
     windows: 'courtyard',
-    description: 'Двухкомнатный офисный блок с возможностью организовать приемную или кабинет руководителя.',
-    features: ['Приточная вентиляция', 'Loft-отделка', 'Кухонный уголок'],
+    description: 'Небольшой кабинет для команды из 2–4 человек рядом с тихой внутренней зоной.',
+    features: ['Приточная вентиляция', 'Loft-отделка', 'Кухонный уголок рядом'],
   },
   {
     id: 'o_203',
     number: '203',
     floor: 2,
-    area: 310,
+    area: 42,
     pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
-    type: 'OpenSpace',
-    windows: 'panoramic',
-    description: 'Большой open-space для команды до 45–50 сотрудников. Возможна гибкая расстановка рабочих мест и переговорных зон.',
-    features: ['Зона кухни', '2 переговорные', 'Климат-контроль', 'Серверная зона'],
+    type: 'Cabinet',
+    windows: 'street',
+    description: 'Угловой кабинет на 5–7 человек с удобной формой под рабочую группу.',
+    features: ['Оптоволокно', 'Кондиционирование', 'Готовая отделка'],
   },
   {
     id: 'o_204',
     number: '204',
     floor: 2,
-    area: 65,
+    area: 75,
     pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'occupied',
     type: 'MeetingRoom',
@@ -111,28 +143,52 @@ const mockOffices: OfficeSpace[] = [
     features: ['Шумоизоляция'],
   },
   {
-    id: 'o_301',
-    number: '301',
-    floor: 3,
-    area: 88,
+    id: 'o_205',
+    number: '205',
+    floor: 2,
+    area: 110,
     pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
     type: 'OpenSpace',
     windows: 'courtyard',
-    description: 'Сбалансированный офис open-space с тихой стороной и видом во двор.',
+    description: 'Офисный блок для команды до 15–18 сотрудников с возможностью выделить переговорную.',
+    features: ['Зонирование', 'Климат-контроль', 'Готовая отделка'],
+  },
+  {
+    id: 'o_206',
+    number: '206',
+    floor: 2,
+    area: 160,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
+    status: 'booked',
+    type: 'OpenSpace',
+    windows: 'panoramic',
+    description: 'Большой офисный блок с открытой планировкой и отдельными зонами.',
+    features: ['2 переговорные', 'Серверная зона', 'Климат-контроль'],
+  },
+  {
+    id: 'o_301',
+    number: '301',
+    floor: 3,
+    area: 25,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
+    status: 'free',
+    type: 'Cabinet',
+    windows: 'courtyard',
+    description: 'Кабинет на 3–4 рабочих места с видом во внутренний двор.',
     features: ['Подвесные светильники', 'Wi-Fi', 'Магнитный замок'],
   },
   {
     id: 'o_302',
     number: '302',
     floor: 3,
-    area: 145,
+    area: 35,
     pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
-    type: 'OpenSpace',
+    type: 'Cabinet',
     windows: 'street',
-    description: 'Loft-офис с высокими потолками и открытыми инженерными конструкциями.',
-    features: ['Потолки 3.8 м', 'Центральное охлаждение', 'Акцентное освещение'],
+    description: 'Компактный loft-офис с высокими потолками и открытыми инженерными конструкциями.',
+    features: ['Потолки 3.6 м', 'Центральное охлаждение', 'Акцентное освещение'],
   },
   {
     id: 'o_303',
@@ -150,29 +206,77 @@ const mockOffices: OfficeSpace[] = [
     id: 'o_304',
     number: '304',
     floor: 3,
+    area: 88,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
+    status: 'free',
+    type: 'OpenSpace',
+    windows: 'courtyard',
+    description: 'Сбалансированный open-space с тихой стороной и видом во двор.',
+    features: ['Зонирование', 'Климат-контроль', 'Готовая отделка'],
+  },
+  {
+    id: 'o_305',
+    number: '305',
+    floor: 3,
+    area: 145,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
+    status: 'free',
+    type: 'OpenSpace',
+    windows: 'street',
+    description: 'Loft-офис для команды до 20–25 сотрудников с открытой планировкой.',
+    features: ['Потолки 3.8 м', 'Центральное охлаждение', 'Акцентное освещение'],
+  },
+  {
+    id: 'o_306',
+    number: '306',
+    floor: 3,
     area: 450,
     pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'occupied',
     type: 'EntireFloor',
     windows: 'panoramic',
-    description: 'Полный этаж в левом крыле здания.',
+    description: 'Крупный офисный блок в левом крыле здания.',
     features: ['Премиум доступ'],
+  },
+  {
+    id: 'o_401',
+    number: '401',
+    floor: 4,
+    area: 20,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
+    status: 'free',
+    type: 'Cabinet',
+    windows: 'courtyard',
+    description: 'Небольшой мансардный кабинет для 2–3 сотрудников.',
+    features: ['Мансардные потолки', 'Готовая отделка', 'Тихая зона'],
   },
   {
     id: 'o_402',
     number: '402',
     floor: 4,
-    area: 240,
+    area: 40,
     pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
-    type: 'OpenSpace',
+    type: 'Cabinet',
     windows: 'panoramic',
-    description: 'Мансардный офис на верхнем этаже с зенитными окнами и выразительной архитектурой.',
-    features: ['Доступ на террасу', 'Мансардные потолки', 'Дизайнерское освещение'],
+    description: 'Мансардный кабинет с выразительной архитектурой и зенитными окнами.',
+    features: ['Зенитные окна', 'Мансардные потолки', 'Дизайнерское освещение'],
   },
   {
     id: 'o_403',
     number: '403',
+    floor: 4,
+    area: 95,
+    pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
+    status: 'free',
+    type: 'MeetingRoom',
+    windows: 'courtyard',
+    description: 'Многофункциональное помещение под переговорную, тренинг-зону или офис.',
+    features: ['Маркерные стены', 'Подготовка под проектор', 'Акустические панели'],
+  },
+  {
+    id: 'o_404',
+    number: '404',
     floor: 4,
     area: 112,
     pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
@@ -183,24 +287,59 @@ const mockOffices: OfficeSpace[] = [
     features: ['Отделка деревом', 'Кондиционирование', 'Ролл-шторы'],
   },
   {
-    id: 'o_404',
-    number: '404',
+    id: 'o_405',
+    number: '405',
     floor: 4,
-    area: 95,
+    area: 240,
     pricePerSqmMonth: RENT_RATE_PER_SQM_MONTH,
     status: 'free',
-    type: 'MeetingRoom',
-    windows: 'courtyard',
-    description: 'Многофункциональное помещение под переговорную, тренинг-зону или офис.',
-    features: ['Маркерные стены', 'Подготовка под проектор', 'Акустические панели'],
+    type: 'OpenSpace',
+    windows: 'panoramic',
+    description: 'Большой мансардный офис на верхнем этаже с гибкой планировкой.',
+    features: ['Доступ на террасу', 'Мансардные потолки', 'Дизайнерское освещение'],
   }
 ];
+
+const floorLayouts: Record<number, LayoutShape[]> = {
+  1: [
+    { number: '101', d: 'M 50,45 L 170,45 L 170,180 L 50,180 Z', labelX: 110, labelY: 105, metaY: 128 },
+    { number: '102', d: 'M 170,45 L 300,45 L 300,180 L 170,180 Z', labelX: 235, labelY: 105, metaY: 128 },
+    { number: '103', d: 'M 300,45 L 460,45 L 460,180 L 300,180 Z', labelX: 380, labelY: 105, metaY: 128 },
+    { number: '104', d: 'M 460,45 L 750,45 L 750,180 L 460,180 Z', labelX: 605, labelY: 105, metaY: 128 },
+    { number: '105', d: 'M 50,220 L 380,220 L 380,355 L 50,355 Z', labelX: 215, labelY: 280, metaY: 303 },
+    { number: '106', d: 'M 380,220 L 750,220 L 750,355 L 380,355 Z', labelX: 565, labelY: 280, metaY: 303 },
+  ],
+  2: [
+    { number: '201', d: 'M 50,45 L 205,45 L 205,170 L 50,170 Z', labelX: 128, labelY: 100, metaY: 123 },
+    { number: '202', d: 'M 205,45 L 360,45 L 360,170 L 205,170 Z', labelX: 282, labelY: 100, metaY: 123 },
+    { number: '203', d: 'M 360,45 L 750,45 L 750,170 L 360,170 Z', labelX: 555, labelY: 100, metaY: 123 },
+    { number: '204', d: 'M 50,230 L 250,230 L 250,355 L 50,355 Z', labelX: 150, labelY: 285, metaY: 308 },
+    { number: '205', d: 'M 250,230 L 500,230 L 500,355 L 250,355 Z', labelX: 375, labelY: 285, metaY: 308 },
+    { number: '206', d: 'M 500,230 L 750,230 L 750,355 L 500,355 Z', labelX: 625, labelY: 285, metaY: 308 },
+  ],
+  3: [
+    { number: '301', d: 'M 50,45 L 210,45 L 210,165 L 50,165 Z', labelX: 130, labelY: 98, metaY: 121 },
+    { number: '302', d: 'M 210,45 L 420,45 L 420,165 L 210,165 Z', labelX: 315, labelY: 98, metaY: 121 },
+    { number: '303', d: 'M 420,45 L 750,45 L 750,165 L 420,165 Z', labelX: 585, labelY: 98, metaY: 121 },
+    { number: '304', d: 'M 50,220 L 300,220 L 300,355 L 50,355 Z', labelX: 175, labelY: 282, metaY: 305 },
+    { number: '305', d: 'M 300,220 L 565,220 L 565,355 L 300,355 Z', labelX: 432, labelY: 282, metaY: 305 },
+    { number: '306', d: 'M 565,190 L 750,190 L 750,355 L 565,355 Z', labelX: 658, labelY: 265, metaY: 288 },
+  ],
+  4: [
+    { number: '401', d: 'M 75,65 L 210,45 L 230,170 L 75,190 Z', labelX: 150, labelY: 112, metaY: 135 },
+    { number: '402', d: 'M 230,45 L 430,45 L 430,170 L 230,170 Z', labelX: 330, labelY: 102, metaY: 125 },
+    { number: '403', d: 'M 430,45 L 725,65 L 725,190 L 430,170 Z', labelX: 575, labelY: 112, metaY: 135 },
+    { number: '404', d: 'M 75,225 L 360,225 L 360,355 L 75,335 Z', labelX: 218, labelY: 285, metaY: 308 },
+    { number: '405', d: 'M 360,225 L 725,225 L 725,335 L 360,355 Z', labelX: 542, labelY: 285, metaY: 308 },
+  ],
+};
 
 export default function OfficeSelector({ onOfficeSelect }: OfficeSelectorProps) {
   const [selectedFloor, setSelectedFloor] = useState<number>(2);
   const [activeOffice, setActiveOffice] = useState<OfficeSpace | null>(mockOffices.find(o => o.floor === 2 && o.status === 'free') || null);
 
   const currentFloorOffices = mockOffices.filter(o => o.floor === selectedFloor);
+  const currentFloorLayout = floorLayouts[selectedFloor] || [];
   const freeOfficesCount = currentFloorOffices.filter(o => o.status === 'free').length;
   const totalFreeArea = currentFloorOffices.reduce((acc, o) => o.status === 'free' ? acc + o.area : acc, 0);
 
@@ -236,24 +375,25 @@ export default function OfficeSelector({ onOfficeSelect }: OfficeSelectorProps) 
     }
   };
 
-  const getOfficeByEnding = (ending: string) => currentFloorOffices.find(o => o.number.endsWith(ending));
+  const getOfficeByNumber = (number: string) => currentFloorOffices.find(o => o.number === number);
 
-  const renderOffice = (ending: string, d: string, x: number, y1: number, y2: number) => {
-    const office = getOfficeByEnding(ending);
+  const renderOffice = (shape: LayoutShape) => {
+    const office = getOfficeByNumber(shape.number);
+    const isActive = activeOffice?.number === shape.number;
     return (
-      <g>
+      <g key={shape.number}>
         <path
-          d={d}
-          className={`transition-all duration-300 ${getStatusClass(office?.status || 'occupied', activeOffice?.number.endsWith(ending) || false)}`}
+          d={shape.d}
+          className={`transition-all duration-300 ${getStatusClass(office?.status || 'occupied', isActive)}`}
           onClick={() => {
             if (office) setActiveOffice(office);
           }}
         />
-        <text x={x} y={y1} textAnchor="middle" className="fill-[#1A1A1A] font-sans font-bold pointer-events-none text-base">
-          Офис {selectedFloor}{ending}
+        <text x={shape.labelX} y={shape.labelY} textAnchor="middle" className="fill-[#1A1A1A] font-sans font-bold pointer-events-none text-base">
+          Офис {shape.number}
         </text>
-        <text x={x} y={y2} textAnchor="middle" className="fill-stone-600 font-sans text-[10px] uppercase tracking-wider pointer-events-none font-bold">
-          {office?.area || 0} м² • {office?.type === 'Cabinet' ? 'Кабинет' : office?.type === 'MeetingRoom' ? 'Переговорная' : 'Open Space'}
+        <text x={shape.labelX} y={shape.metaY} textAnchor="middle" className="fill-stone-600 font-sans text-[10px] uppercase tracking-wider pointer-events-none font-bold">
+          {office?.area || 0} м² • {office?.type === 'Cabinet' ? 'Кабинет' : office?.type === 'MeetingRoom' ? 'Переговорная' : office?.type === 'EntireFloor' ? 'Этаж' : 'Open Space'}
         </text>
       </g>
     );
@@ -272,16 +412,16 @@ export default function OfficeSelector({ onOfficeSelect }: OfficeSelectorProps) 
               Интерактивный выбор помещений
             </h2>
             <p className="text-stone-600 font-sans text-xs md:text-sm max-w-2xl leading-relaxed">
-              Выберите этаж и помещение на схеме, чтобы посмотреть площадь, ставку 1 250 ₽ за м² в месяц и отправить заявку менеджеру отдела аренды.
+              Выберите этаж и помещение на схеме: добавили компактные кабинеты от 15 м², отдельные варианты 20 и 25 м², а также разные планировки по этажам.
             </p>
           </div>
           
-          <div className="flex items-center bg-[#F4F1EE] border border-[#1A1A1A]/10 p-1 rounded-none self-start md:self-auto shrink-0">
+          <div className="flex items-center bg-[#F4F1EE] border border-[#1A1A1A]/10 p-1 rounded-none self-start md:self-auto shrink-0 overflow-x-auto max-w-full">
             {[1, 2, 3, 4].map((fl) => (
               <button
                 key={fl}
                 onClick={() => selectFloor(fl)}
-                className={`px-4 py-2.5 rounded-none font-sans font-bold text-xs uppercase tracking-[0.16em] transition cursor-pointer ${
+                className={`px-4 py-2.5 rounded-none font-sans font-bold text-xs uppercase tracking-[0.16em] transition cursor-pointer whitespace-nowrap ${
                   selectedFloor === fl
                     ? 'bg-[#1A1A1A] text-white shadow-none'
                     : 'text-stone-700 hover:text-stone-900 hover:bg-stone-200/50'
@@ -308,8 +448,8 @@ export default function OfficeSelector({ onOfficeSelect }: OfficeSelectorProps) 
             <span className="text-stone-500 font-sans text-[10px] block uppercase tracking-wider mt-0.5">за м² / месяц</span>
           </div>
           <div className="bg-[#F4F1EE] border border-[#1A1A1A]/10 p-4 rounded-none">
-            <span className="text-stone-550 text-[10px] block font-bold uppercase tracking-wider font-sans">Высота потолков</span>
-            <span className="text-stone-900 font-sans font-extrabold text-xl sm:text-2xl mt-1 block">{selectedFloor === 4 ? '3.8 м' : '3.6 м'}</span>
+            <span className="text-stone-550 text-[10px] block font-bold uppercase tracking-wider font-sans">Мин. площадь</span>
+            <span className="text-stone-900 font-sans font-extrabold text-xl sm:text-2xl mt-1 block">от 15 м²</span>
           </div>
         </div>
 
@@ -330,14 +470,15 @@ export default function OfficeSelector({ onOfficeSelect }: OfficeSelectorProps) 
             <div className="flex-1 flex items-center justify-center my-6 relative">
               <svg viewBox="0 0 800 400" className="w-full max-w-xl h-auto drop-shadow-none">
                 <rect x="10" y="10" width="780" height="380" rx="0" className="fill-[#F4F1EE] stroke-[#1A1A1A]/25 stroke-2" />
-                <rect x="50" y="180" width="700" height="40" className="fill-stone-200/50 stroke-stone-300/50" />
-                <text x="400" y="204" textAnchor="middle" className="fill-stone-500 font-sans text-[10px] font-bold uppercase tracking-[0.2em]">
-                  Центральный холл и коридор
+                {selectedFloor === 4 ? (
+                  <path d="M 75,210 C 190,185 610,185 725,210" className="fill-none stroke-stone-300/80 stroke-[18]" />
+                ) : (
+                  <rect x="50" y="185" width="700" height="35" className="fill-stone-200/50 stroke-stone-300/50" />
+                )}
+                <text x="400" y="208" textAnchor="middle" className="fill-stone-500 font-sans text-[10px] font-bold uppercase tracking-[0.2em]">
+                  {selectedFloor === 4 ? 'Мансардный проход' : 'Центральный холл и коридор'}
                 </text>
-                {renderOffice('01', 'M 50,50 L 320,50 L 320,180 L 50,180 Z', 185, 115, 140)}
-                {renderOffice('02', 'M 320,50 L 750,50 L 750,180 L 320,180 Z', 535, 115, 140)}
-                {renderOffice('03', 'M 50,220 L 380,220 L 380,350 L 50,350 Z', 215, 285, 310)}
-                {renderOffice('04', 'M 380,220 L 750,220 L 750,350 L 380,350 Z', 565, 285, 310)}
+                {currentFloorLayout.map(renderOffice)}
               </svg>
             </div>
 
