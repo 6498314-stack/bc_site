@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Menu, X, ClipboardList } from 'lucide-react';
+import { Phone, Menu, X, ClipboardList, Send } from 'lucide-react';
 
 interface HeaderProps {
   onNavigate: (section: string) => void;
@@ -83,16 +83,22 @@ export default function Header({
             </nav>
 
             <div className="hidden sm:flex items-center gap-4">
-              <div className="flex flex-col text-right">
+              <div className="flex flex-col text-right gap-0.5">
                 <a
                   href="tel:+79175219421"
                   className="text-stone-900 hover:text-red-700 font-sans text-xs uppercase tracking-wider font-bold transition"
                 >
-                  +79175219421
+                  +7 917 521-94-21
                 </a>
-                <span className="text-[9px] text-stone-500 font-bold uppercase tracking-wider flex items-center gap-1 justify-end">
-                  Звонки: 09:00–20:00
-                </span>
+                <a
+                  href="https://t.me/Arthedain77"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[10px] text-stone-600 hover:text-red-700 font-sans font-bold tracking-wider flex items-center gap-1 justify-end transition"
+                >
+                  <Send className="w-3 h-3" />
+                  @Arthedain77
+                </a>
               </div>
 
               <button
@@ -120,6 +126,7 @@ export default function Header({
               <button
                 onClick={onOpenMyBookings}
                 className="relative p-2 text-stone-700 hover:text-stone-950 hover:bg-stone-200/40 rounded-none transition"
+                aria-label="Мои заявки на аренду"
               >
                 <ClipboardList className="w-5 h-5" />
                 {bookingsCount > 0 && (
@@ -132,10 +139,33 @@ export default function Header({
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="p-2 text-stone-700 hover:text-stone-950 hover:bg-stone-200/40 rounded-none transition focus:outline-none"
+                aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'}
               >
                 {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
+          </div>
+        </div>
+
+        <div className="sm:hidden border-t border-[#1A1A1A]/10 bg-white/55">
+          <div className="px-4 py-2 flex items-center justify-center gap-5">
+            <a
+              href="tel:+79175219421"
+              className="flex items-center gap-1.5 text-stone-900 font-sans text-[11px] font-bold whitespace-nowrap"
+            >
+              <Phone className="w-3.5 h-3.5 text-red-700" />
+              +7 917 521-94-21
+            </a>
+            <span className="h-4 w-px bg-[#1A1A1A]/15" aria-hidden="true"></span>
+            <a
+              href="https://t.me/Arthedain77"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-stone-700 hover:text-red-700 font-sans text-[11px] font-bold whitespace-nowrap transition"
+            >
+              <Send className="w-3.5 h-3.5 text-red-700" />
+              @Arthedain77
+            </a>
           </div>
         </div>
 
@@ -164,8 +194,17 @@ export default function Header({
                   href="tel:+79175219421"
                   className="text-stone-950 font-bold text-sm tracking-wider flex items-center gap-2"
                 >
-                  <Phone className="w-4 h-4 text-stone-400" />
-                  +79175219421
+                  <Phone className="w-4 h-4 text-red-700" />
+                  +7 917 521-94-21
+                </a>
+                <a
+                  href="https://t.me/Arthedain77"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-stone-950 font-bold text-sm tracking-wider flex items-center gap-2"
+                >
+                  <Send className="w-4 h-4 text-red-700" />
+                  @Arthedain77
                 </a>
                 <button
                   onClick={() => {
